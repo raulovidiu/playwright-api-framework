@@ -1,0 +1,27 @@
+{
+	"name": "techmart-tests",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Traditional test suite for TechMart demo app",
+	"scripts": {
+		"lint": "biome check ./tests",
+		"fix": "biome check --write ./tests",
+		"format": "biome format --write ./tests",
+		"test": "playwright test",
+		"test:headed": "playwright test --headed",
+		"test:ui": "playwright test --ui",
+		"test:report": "playwright show-report"
+	},
+	"devDependencies": {
+		"typescript": "6.0.3",
+		"@playwright/test": "^1.60.0",
+		"@biomejs/biome": "^2.4.16"
+	},
+	"dependencies": {
+		"dotenv": "17.4.2",
+		"cross-env": "10.1.0",
+		"zod": "4.4.3",
+		"@faker-js/faker": "10.4.0",
+		"@types/node": "25.9.1"
+	}
+}
