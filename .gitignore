@@ -44,16 +44,11 @@ tsconfig.tsbuildinfo
 # ================================
 # Playwright
 # ================================
-/test-results/
-/playwright-report/
-/playwright/.cache/
-/blob-report/
-/coverage/
-
-# ================================
-# Biome
-# ================================
-# (no build artifacts, config kept)
+/tests/test-results/
+/tests/playwright-report/
+/tests/playwright/.cache/
+/tests/blob-report/
+/tests/coverage/
 
 # ================================
 # Editor & IDE
