@@ -1,8 +1,8 @@
 import type { z } from "zod";
 import type {
-	ErrorResponseSchema,
-	ProductsSchema,
-	UserSchema,
+  ErrorResponseSchema,
+  ProductsSchema,
+  UserSchema,
 } from "./schemas.js";
 
 /**
@@ -15,11 +15,11 @@ import type {
  * @property {string} [headers] - Additional headers for the request.
  */
 export type ApiRequestParams = {
-	method: "POST" | "GET" | "PUT" | "DELETE";
-	url: string;
-	baseUrl?: string;
-	body?: Record<string, unknown> | null;
-	headers?: string;
+  method: "POST" | "GET" | "PUT" | "DELETE";
+  url: string;
+  baseUrl?: string;
+  body?: Record<string, unknown> | null;
+  headers?: string;
 };
 
 /**
@@ -30,18 +30,18 @@ export type ApiRequestParams = {
  * @property {T} body - The response body.
  */
 export type ApiRequestResponse<T = unknown> = {
-	status: number;
-	body: T;
+  status: number;
+  body: T;
 };
 
 // define the function signature as a type
 export type ApiRequestFn = <T = unknown>(
-	params: ApiRequestParams,
+  params: ApiRequestParams,
 ) => Promise<ApiRequestResponse<T>>;
 
 // grouping them all together
 export type ApiRequestMethods = {
-	apiRequest: ApiRequestFn;
+  apiRequest: ApiRequestFn;
 };
 
 export type ProductsResponse = z.infer<typeof ProductsSchema>;

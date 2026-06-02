@@ -4,19 +4,19 @@ import { HomePage } from "../../page-objects/home-page.js";
 // import { ArticlePage } from '../../pages/clientSite/articlePage';
 
 export type FrameworkFixtures = {
-	homePage: HomePage;
+  homePage: HomePage;
 
-	// navPage: NavPage;
+  // navPage: NavPage;
 };
 
 export const test = base.extend<FrameworkFixtures>({
-	homePage: async ({ page }, use) => {
-		await use(new HomePage(page));
-	},
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
+  },
 
-	// navPage: async ({ page }, use) => {
-	//     await use(new NavPage(page));
-	// },
+  // navPage: async ({ page }, use) => {
+  //     await use(new NavPage(page));
+  // },
 });
 
 export { expect } from "@playwright/test";
