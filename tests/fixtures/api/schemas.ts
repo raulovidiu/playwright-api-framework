@@ -11,6 +11,15 @@ export const ProductsSchema = z.array(
   }),
 );
 
+export const ProductSchema = z.strictObject({
+  id: z.number().int(),
+  name: z.string(),
+  price: z.number().positive(),
+  category: z.string(),
+  image: z.string(),
+  stock: z.number().int().nonnegative(),
+});
+
 export const UserSchema = z.object({
   user: z.strictObject({
     email: z.string().email(),

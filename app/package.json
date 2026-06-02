@@ -1,5 +1,5 @@
 {
-  "name": "techmart-demo",
+  "name": "demo-app",
   "version": "1.0.0",
   "description": "Sample e-commerce app for software testing tutorial",
   "main": "server.js",

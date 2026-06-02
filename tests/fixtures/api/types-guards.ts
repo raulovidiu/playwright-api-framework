@@ -1,6 +1,7 @@
 import type { z } from "zod";
 import type {
   ErrorResponseSchema,
+  ProductSchema,
   ProductsSchema,
   UserSchema,
 } from "./schemas.js";
@@ -45,5 +46,6 @@ export type ApiRequestMethods = {
 };
 
 export type ProductsResponse = z.infer<typeof ProductsSchema>;
+export type ProductResponse = z.infer<typeof ProductSchema>;
 export type User = z.infer<typeof UserSchema>;
 export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
