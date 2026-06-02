@@ -1,8 +1,8 @@
 {
-	"name": "techmart-tests",
+	"name": "playwright-api-framework",
 	"version": "1.0.0",
 	"type": "module",
-	"description": "Traditional test suite for TechMart demo app",
+	"description": "Playwright API Tests Framework",
 	"scripts": {
 		"lint": "biome check ./tests",
 		"fix": "biome check --write ./tests",
