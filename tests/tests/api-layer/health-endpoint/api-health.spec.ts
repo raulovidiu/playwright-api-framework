@@ -36,3 +36,46 @@ test.describe("API Health Endpoint", () => {
 		});
 	});
 });
+
+test.describe("Negative Cases for API Health Endpoint", () => {
+	test("Wrong Request Method Returns 404", async ({ apiRequest }) => {
+		await test.step("POST to /api/health is be rejected", async () => {
+			const { status } = await apiRequest({
+				method: "POST",
+				url: "/api/health",
+				baseUrl: BASE_URL,
+			});
+
+			expect(status).toBe(404);
+		});
+	});
+
+	test("Non-existent endpoint returns 404", async ({ apiRequest }) => {
+		await test.step("GET /api/health/unknown Responds With Not Found", async () => {
+			const { status } = await apiRequest({
+				method: "GET",
+				url: "/api/health/unknown",
+				baseUrl: BASE_URL,
+			});
+
+			expect(status).toBe(404);
+		});
+	});
+
+	test("Endpoint is reachable under load (10 sequential calls succeed)", async ({
+		apiRequest,
+	}) => {
+		for (let i = 0; i < 10; i++) {
+			await test.step(`Request ${i + 1} of 5`, async () => {
+				const { status, body } = await apiRequest<HealthResponse>({
+					method: "GET",
+					url: "/api/health",
+					baseUrl: BASE_URL,
+				});
+
+				expect(status).toBe(200);
+				expect(body.status).toBe("healthy");
+			});
+		}
+	});
+});
