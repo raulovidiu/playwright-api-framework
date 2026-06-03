@@ -20,6 +20,11 @@ export const ProductSchema = z.strictObject({
   stock: z.number().int().nonnegative(),
 });
 
+export const HealthSchema = z.strictObject({
+	"status": z.string(),
+	"timestamp": z.iso.datetime(),
+});
+
 export const UserSchema = z.object({
   user: z.strictObject({
     email: z.string().email(),
