@@ -32,7 +32,7 @@ test.describe("API Health Endpoint", () => {
 		});
 
 		await test.step("Status Strict Equality is Healthy", async () => {
-			expect(responseBody.status).toEqual("healthy");
+			expect(responseBody.status).toBe("healthy");
 		});
 	});
 });
