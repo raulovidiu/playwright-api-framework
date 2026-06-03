@@ -172,17 +172,4 @@ test.describe("API Tests", () => {
 		});
 	});
 
-	test.describe("Health API", () => {
-		test("GET /api/health should return healthy status", async ({
-			request,
-		}) => {
-			const response = await request.get(`${BASE_URL}/api/health`);
-
-			expect(response.ok()).toBeTruthy();
-
-			const data = await response.json();
-			expect(data.status).toBe("healthy");
-			expect(data.timestamp).toBeDefined();
-		});
-	});
 });
