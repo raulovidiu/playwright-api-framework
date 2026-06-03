@@ -171,5 +171,4 @@ test.describe("API Tests", () => {
 			expect(data.user.email).toBe(uniqueEmail);
 		});
 	});
-
 });
