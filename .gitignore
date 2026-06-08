@@ -54,6 +54,7 @@ tsconfig.tsbuildinfo
 # Editor & IDE
 # ================================
 .vscode/
+.cursorrules
 .idea/
 *.suo
 *.ntvs*
