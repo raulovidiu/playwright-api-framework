@@ -78,3 +78,9 @@ pids/
 *.pid
 *.seed
 *.pid.lock
+
+# ================================
+# AI Tooling (local only)
+# ================================
+.claude/
+.mcp.json

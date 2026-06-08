@@ -42,3 +42,18 @@ export const ErrorResponseSchema = z.object({
     password: z.array(z.string()).optional(),
   }),
 });
+
+// Schema for POST /api/register — matches { message, user: { id, email, name } }
+export const RegisterSchema = z.object({
+  message: z.string(),
+  user: z.strictObject({
+    id: z.number().int().positive(),
+    email: z.string().email(),
+    name: z.string(),
+  }),
+});
+
+// Schema for /api/register error responses — { error: string }
+export const RegisterErrorSchema = z.object({
+  error: z.string(),
+});

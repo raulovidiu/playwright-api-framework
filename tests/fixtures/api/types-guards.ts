@@ -4,6 +4,8 @@ import type {
   HealthSchema,
   ProductSchema,
   ProductsSchema,
+  RegisterErrorSchema,
+  RegisterSchema,
   UserSchema,
 } from "./schemas.js";
 
@@ -51,3 +53,5 @@ export type ProductResponse = z.infer<typeof ProductSchema>;
 export type HealthResponse = z.infer<typeof HealthSchema>;
 export type User = z.infer<typeof UserSchema>;
 export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
+export type RegisterResponse = z.infer<typeof RegisterSchema>;
+export type RegisterErrorResponse = z.infer<typeof RegisterErrorSchema>;
