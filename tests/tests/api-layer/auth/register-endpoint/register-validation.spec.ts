@@ -8,8 +8,8 @@ import {
 	createRegisterPayload,
 } from "../../../../fixtures/api/factories/user.factory.js";
 import { expect, test } from "../../../../fixtures/pom/test-options.js";
+import { BASE_URL } from "../../../../constants.js";
 
-const BASE_URL = "http://localhost:3000";
 
 test.describe("Register API — Field Validation", () => {
 	test("Register with missing email returns 400", async ({ apiRequest }) => {

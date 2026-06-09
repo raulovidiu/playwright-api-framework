@@ -1,9 +1,9 @@
 import { expect, test } from "../../../fixtures/pom/test-options.js";
 import type { ProductResponse } from "../../../fixtures/api/types-guards.js";
+import { BASE_URL } from "../../../constants.js";
+
 
 type ApiErrorResponse = { error: string; message?: string };
-
-const BASE_URL = "http://localhost:3000";
 
 const MOCK_PRODUCT: ProductResponse = {
 	id: 1,

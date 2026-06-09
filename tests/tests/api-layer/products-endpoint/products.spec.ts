@@ -1,8 +1,8 @@
 import { ProductsSchema } from "../../../fixtures/api/schemas.js";
 import type { ProductsResponse } from "../../../fixtures/api/types-guards.js";
 import { expect, test } from "../../../fixtures/pom/test-options.js";
+import { BASE_URL } from "../../../constants.js";
 
-const BASE_URL = "http://localhost:3000";
 
 test.describe("Products API", () => {
 	test("Validate Retrieve Products Endpoint", async ({ apiRequest }) => {

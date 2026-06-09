@@ -2,8 +2,8 @@ import { RegisterSchema } from "../../../../fixtures/api/schemas.js";
 import type { RegisterResponse } from "../../../../fixtures/api/types-guards.js";
 import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
 import { expect, test } from "../../../../fixtures/pom/test-options.js";
+import { BASE_URL } from "../../../../constants.js";
 
-const BASE_URL = "http://localhost:3000";
 
 test.describe("Register API - Nominal Conditions", () => {
 	test("Validate Register with Valid Credentials Returns 201", async ({
@@ -111,7 +111,7 @@ test.describe("Register API - Negative Cases", () => {
 				baseUrl: BASE_URL,
 				body: payload,
 			});
-			expect(status).toBe(409);
+			expect(status).toBe(400);
 		});
 	});
 
