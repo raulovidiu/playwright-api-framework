@@ -1,9 +1,8 @@
+import { BASE_URL } from "../../../../constants.js";
+import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
 import { RegisterSchema } from "../../../../fixtures/api/schemas.js";
 import type { RegisterResponse } from "../../../../fixtures/api/types-guards.js";
-import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
 import { expect, test } from "../../../../fixtures/pom/test-options.js";
-import { BASE_URL } from "../../../../constants.js";
-
 
 test.describe("Register API - Nominal Conditions", () => {
 	test("Validate Register with Valid Credentials Returns 201", async ({
@@ -149,9 +148,7 @@ test.describe("Register API - Negative Cases", () => {
 		});
 	});
 
-	test("Validate Register without Name Returns 400", async ({
-		apiRequest,
-	}) => {
+	test("Validate Register without Name Returns 400", async ({ apiRequest }) => {
 		await test.step("POST /api/register without name field → status 400", async () => {
 			const { status } = await apiRequest({
 				method: "POST",

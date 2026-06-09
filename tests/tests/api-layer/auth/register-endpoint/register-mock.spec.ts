@@ -1,7 +1,7 @@
-import { expect, test } from "../../../../fixtures/pom/test-options.js";
-import type { RegisterResponse } from "../../../../fixtures/api/types-guards.js";
-import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
 import { BASE_URL } from "../../../../constants.js";
+import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
+import type { RegisterResponse } from "../../../../fixtures/api/types-guards.js";
+import { expect, test } from "../../../../fixtures/pom/test-options.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 
@@ -34,7 +34,11 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 				const res = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: "a@b.com", password: "pass", name: "A" }),
+					body: JSON.stringify({
+						email: "a@b.com",
+						password: "pass",
+						name: "A",
+					}),
 				});
 				const body = (await res.json()) as ApiErrorResponse;
 				return { status: res.status, body };
@@ -49,7 +53,8 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 	test("Simulate 503 Service Unavailable on register", async ({ page }) => {
 		const serviceUnavailableResponse: ApiErrorResponse = {
 			error: "Service Unavailable",
-			message: "The registration service is temporarily unavailable. Please retry.",
+			message:
+				"The registration service is temporarily unavailable. Please retry.",
 		};
 
 		await test.step("Setup Route Mock for 503 Service Unavailable", async () => {
@@ -67,7 +72,11 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 				const res = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: "a@b.com", password: "pass", name: "A" }),
+					body: JSON.stringify({
+						email: "a@b.com",
+						password: "pass",
+						name: "A",
+					}),
 				});
 				const body = (await res.json()) as ApiErrorResponse;
 				return { status: res.status, body };
@@ -93,7 +102,11 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 					await fetch(url, {
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({ email: "a@b.com", password: "pass", name: "A" }),
+						body: JSON.stringify({
+							email: "a@b.com",
+							password: "pass",
+							name: "A",
+						}),
 					});
 					return false;
 				} catch {
@@ -122,7 +135,11 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 				const res = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: "a@b.com", password: "pass", name: "A" }),
+					body: JSON.stringify({
+						email: "a@b.com",
+						password: "pass",
+						name: "A",
+					}),
 				});
 				const body = (await res.json()) as RegisterResponse;
 				return { status: res.status, body };
@@ -155,7 +172,11 @@ test.describe("Register API Mocking — Network and Error Scenarios", () => {
 				const res = await fetch(url, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: "a@b.com", password: "pass", name: "A" }),
+					body: JSON.stringify({
+						email: "a@b.com",
+						password: "pass",
+						name: "A",
+					}),
 				});
 				const body = (await res.json()) as Partial<RegisterResponse>;
 				return { status: res.status, body };

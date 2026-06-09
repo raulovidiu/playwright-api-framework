@@ -1,8 +1,11 @@
-import { registerFreshUser } from "../../../../fixtures/api/helpers/user.helper.js"
-import { expect, test } from "../../../../fixtures/pom/test-options.js";
-import { LoginResponse, GetUserResponse, LogoutResponse } from "../../../../types/health.type.js"
 import { BASE_URL } from "../../../../constants.js";
-
+import { registerFreshUser } from "../../../../fixtures/api/helpers/user.helper.js";
+import { expect, test } from "../../../../fixtures/pom/test-options.js";
+import type {
+	GetUserResponse,
+	LoginResponse,
+	LogoutResponse,
+} from "../../../../types/health.type.js";
 
 test.describe("Authentication API - Nominal Conditions", () => {
 	test("Validate Login with Valid Credentials Returns 200", async ({

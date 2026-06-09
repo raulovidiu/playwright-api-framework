@@ -14,16 +14,16 @@ import { expect, test } from "../fixtures/pom/test-options.js";
 const BASE_URL = "http://localhost:3000";
 
 test.describe("Seed — API Framework Bootstrap", () => {
-  test("seed: API is reachable", async ({ apiRequest }) => {
-    await test.step("GET /api/health returns 200", async () => {
-      const { status, body } = await apiRequest({
-        method: "GET",
-        url: "/api/health",
-        baseUrl: BASE_URL,
-      });
+	test("seed: API is reachable", async ({ apiRequest }) => {
+		await test.step("GET /api/health returns 200", async () => {
+			const { status, body } = await apiRequest({
+				method: "GET",
+				url: "/api/health",
+				baseUrl: BASE_URL,
+			});
 
-      expect(status).toBe(200);
-      expect(body).toBeTruthy();
-    });
-  });
+			expect(status).toBe(200);
+			expect(body).toBeTruthy();
+		});
+	});
 });
