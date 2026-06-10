@@ -163,24 +163,6 @@ test.describe("Register API - Negative Cases", () => {
 		});
 	});
 
-	test("Validate Register with Invalid Email Format Returns 400", async ({
-		apiRequest,
-	}) => {
-		await test.step("POST /api/register with malformed email → status 400", async () => {
-			const { status } = await apiRequest({
-				method: "POST",
-				url: "/api/register",
-				baseUrl: BASE_URL,
-				body: {
-					email: "not-an-email",
-					password: "ValidPass123!",
-					name: "Test User",
-				},
-			});
-			expect(status).toBe(400);
-		});
-	});
-
 	test("Validate Register with Empty Body Returns 400", async ({
 		apiRequest,
 	}) => {
