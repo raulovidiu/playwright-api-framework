@@ -3,7 +3,6 @@ import { clearCart } from "../../../fixtures/api/helpers/cart.helper.js";
 import { expect, test } from "../../../fixtures/pom/test-options.js";
 
 test.describe("Cart API - Negative Cases", () => {
-
 	test.describe("POST /api/cart", () => {
 		test("Validate Adding Non-Existent Product Returns 404", async ({
 			apiRequest,
@@ -50,9 +49,7 @@ test.describe("Cart API - Negative Cases", () => {
 			});
 		});
 
-		test("Validate Adding Item With Zero Quantity", async ({
-			apiRequest,
-		}) => {
+		test("Validate Adding Item With Zero Quantity", async ({ apiRequest }) => {
 			await test.step("POST /api/cart with quantity 0 → status 200", async () => {
 				const { status } = await apiRequest({
 					method: "POST",
@@ -168,9 +165,7 @@ test.describe("Cart API - Negative Cases", () => {
 	});
 
 	test.describe("DELETE /api/cart/:productId", () => {
-		test("Validate Removing Non-Existent Cart Item", async ({
-			apiRequest,
-		}) => {
+		test("Validate Removing Non-Existent Cart Item", async ({ apiRequest }) => {
 			await test.step("Clear cart to guarantee the target item does not exist", async () => {
 				await clearCart(apiRequest);
 			});
@@ -186,5 +181,4 @@ test.describe("Cart API - Negative Cases", () => {
 			});
 		});
 	});
-
 });

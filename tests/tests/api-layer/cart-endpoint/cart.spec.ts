@@ -16,9 +16,7 @@ import type {
 } from "../../../fixtures/api/types-guards.js";
 import { expect, test } from "../../../fixtures/pom/test-options.js";
 
-
 test.describe("Cart API - Nominal Conditions", () => {
-
 	test.beforeEach(async ({ apiRequest }) => {
 		await test.step("Clear cart to guarantee a known empty state", async () => {
 			await clearCart(apiRequest);

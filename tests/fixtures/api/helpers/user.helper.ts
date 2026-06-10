@@ -3,7 +3,7 @@ import { ApiRequestResponse, RegisterResponse } from "../types-guards.js";
 import { BASE_URL } from "../../../constants.js";
 
 
-// Helper — registers a fresh user and returns the payload used
+// Registers a fresh user and returns the payload used
 
 export async function registerFreshUser(
 	apiRequest: <T = unknown>(params: {
