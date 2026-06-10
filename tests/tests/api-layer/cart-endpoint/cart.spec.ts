@@ -27,8 +27,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Empty Cart Returns 200 With Empty Items Array", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartResponse;
 
 			await test.step("GET /api/cart → status 200", async () => {
 				const { status, body } = await apiRequest<CartResponse>({
@@ -59,7 +59,7 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Cart Returns Added Items When Cart Is Non-Empty", async ({
 			apiRequest,
 		}) => {
-			let responseBody: CartResponse;
+			let responseBody = {} as CartResponse;
 
 			await test.step("POST /api/cart — seed one item (productId: 1, quantity: 2)", async () => {
 				await apiRequest({
@@ -90,8 +90,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 			});
 
 			await test.step("item has correct productId and quantity", async () => {
-				expect(responseBody.items[0].productId).toBe(1);
-				expect(responseBody.items[0].quantity).toBe(2);
+				expect(responseBody.items[0]!.productId).toBe(1);
+				expect(responseBody.items[0]!.quantity).toBe(2);
 			});
 		});
 	});
@@ -100,8 +100,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Adding A Single Item Returns 200 With Updated Cart", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartAddResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartAddResponse;
 
 			await test.step("POST /api/cart with productId 1 and quantity 2 → status 200", async () => {
 				const { status, body } = await apiRequest<CartAddResponse>({
@@ -130,15 +130,15 @@ test.describe("Cart API - Nominal Conditions", () => {
 			});
 
 			await test.step("Cart entry reflects the submitted productId and quantity", async () => {
-				expect(responseBody.cart[0].productId).toBe(1);
-				expect(responseBody.cart[0].quantity).toBe(2);
+				expect(responseBody.cart[0]!.productId).toBe(1);
+				expect(responseBody.cart[0]!.quantity).toBe(2);
 			});
 		});
 
 		test("Validate Adding Multiple Different Items Accumulates Them In The Cart", async ({
 			apiRequest,
 		}) => {
-			let responseBody: CartAddResponse;
+			let responseBody = {} as CartAddResponse;
 
 			await test.step("POST /api/cart — add first item (productId: 1)", async () => {
 				await apiRequest({
@@ -175,8 +175,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Updating Item Quantity Returns 200 With Correct Quantity", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartUpdateResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartUpdateResponse;
 
 			await test.step("POST /api/cart — seed item (productId: 1, quantity: 1)", async () => {
 				await apiRequest({
@@ -219,7 +219,7 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Updating Quantity To 1 Keeps Item In Cart", async ({
 			apiRequest,
 		}) => {
-			let responseBody: CartUpdateResponse;
+			let responseBody = {} as CartUpdateResponse;
 
 			await test.step("POST /api/cart — seed item (productId: 1, quantity: 10)", async () => {
 				await apiRequest({
@@ -256,8 +256,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Removing A Specific Item Returns 200 And Cart No Longer Contains It", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartDeleteItemResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartDeleteItemResponse;
 
 			await test.step("POST /api/cart — seed item (productId: 1, quantity: 1)", async () => {
 				await apiRequest({
@@ -298,7 +298,7 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Removing One Item Leaves Other Items Intact", async ({
 			apiRequest,
 		}) => {
-			let responseBody: CartDeleteItemResponse;
+			let responseBody = {} as CartDeleteItemResponse;
 
 			await test.step("POST /api/cart — seed two items (productId: 1 and productId: 2)", async () => {
 				await apiRequest({
@@ -341,8 +341,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Clearing The Entire Cart Returns 200 And Empty Cart", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartClearResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartClearResponse;
 
 			await test.step("Seed cart with two items (productId: 1 and productId: 2)", async () => {
 				await apiRequest({
@@ -384,8 +384,8 @@ test.describe("Cart API - Nominal Conditions", () => {
 		test("Validate Clearing An Already Empty Cart Returns 200", async ({
 			apiRequest,
 		}) => {
-			let responseStatus: number;
-			let responseBody: CartClearResponse;
+			let responseStatus: number = 0;
+			let responseBody = {} as CartClearResponse;
 
 			await test.step("DELETE /api/cart on an already-empty cart → status 200", async () => {
 				const { status, body } = await apiRequest<CartClearResponse>({
