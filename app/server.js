@@ -23,6 +23,9 @@ const products = [
   { id: 7, name: 'Mouse Pad Mini', price: 2.99, category: 'accessories', image: 'mousepad.svg', stock: 50 }
 ];
 
+// Global in-memory store for completed orders
+const orders = [];
+
 // Session-based storage (carts and users per session)
 const sessions = {};
 
@@ -239,9 +242,33 @@ app.post('/api/checkout', (req, res) => {
     date: new Date().toISOString()
   };
   
+  // Save order to the in-memory array before clearing the cart
+  orders.push(order);
+  
   req.session.cart = [];
   
   res.json({ message: 'Order placed successfully', order });
+});
+
+// Get order details by ID
+app.get('/api/orders/:id', (req, res) => {
+  const orderId = parseInt(req.params.id);
+  const order = orders.find(o => o.id === orderId);
+  
+  if (!order) {
+    return res.status(404).json({ error: 'Order not found' });
+  }
+  
+  // Optionally map items to include full product details, matching the structure
+  const orderWithProducts = {
+    ...order,
+    items: order.items.map(item => {
+      const product = products.find(p => p.id === item.productId);
+      return { ...item, product };
+    })
+  };
+
+  res.json(orderWithProducts);
 });
 
 // Health check
