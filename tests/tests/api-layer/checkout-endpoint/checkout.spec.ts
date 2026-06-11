@@ -6,7 +6,6 @@ import type { CheckoutResponse } from "../../../fixtures/api/types-guards.js";
 import { expect, test } from "../../../fixtures/pom/test-options.js";
 import { shippingData } from "../../../test-data/shipping-data.js";
 
-
 test.describe("Checkout API - Nominal Conditions", () => {
 	test.beforeEach(async ({ apiRequest }) => {
 		await test.step("Clear cart to guarantee a known empty state", async () => {
