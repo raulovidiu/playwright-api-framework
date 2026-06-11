@@ -107,3 +107,29 @@ export const CartDeleteItemResponseSchema = z.strictObject({
 export const CartClearResponseSchema = z.strictObject({
 	message: z.string(),
 });
+
+// Schema for Checkout
+export const CheckoutResponseSchema = z.strictObject({
+	message: z.string(),
+	order: z.strictObject({
+		id: z.number().int().positive(),
+		items: z.array(
+			z.strictObject({
+				productId: z.number().int().positive(),
+				quantity: z.number().int().positive(),
+			})
+		),
+		total: z.string(),
+		shipping: z.strictObject({
+			firstName: z.string(),
+			lastName: z.string(),
+			address: z.string(),
+			address2: z.string().optional().nullable(),
+			city: z.string(),
+			state: z.string(),
+			zip: z.string(),
+			phone: z.string(),
+		}),
+		date: z.iso.datetime(),
+	}),
+});

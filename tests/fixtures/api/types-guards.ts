@@ -12,6 +12,7 @@ import type {
 	RegisterErrorSchema,
 	RegisterSchema,
 	UserSchema,
+	CheckoutResponseSchema
 } from "./schemas.js";
 
 /**
@@ -72,3 +73,6 @@ export type CartAddResponse = z.infer<typeof CartAddResponseSchema>;
 export type CartUpdateResponse = z.infer<typeof CartUpdateResponseSchema>;
 export type CartDeleteItemResponse = z.infer<typeof CartDeleteItemResponseSchema>;
 export type CartClearResponse = z.infer<typeof CartClearResponseSchema>;
+
+// Checkout types
+export type CheckoutResponse = z.infer<typeof CheckoutResponseSchema>;
