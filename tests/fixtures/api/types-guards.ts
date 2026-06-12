@@ -12,11 +12,12 @@ import type {
 	RegisterErrorSchema,
 	RegisterSchema,
 	UserSchema,
-	CheckoutResponseSchema
+	CheckoutResponseSchema,
+	OrderItemsResponseSchema
 } from "./schemas.js";
 
 /**
- * Parameters for making an API request.
+ * Parameters for Composing an API Request
  * @typedef {Object} ApiRequestParams
  * @property {'POST' | 'GET' | 'PUT' | 'DELETE'} method - The HTTP method to use.
  * @property {string} url - The endpoint URL for the request.
@@ -33,7 +34,7 @@ export type ApiRequestParams = {
 };
 
 /**
- * Response from an API request.
+ * Response from an API Request
  * @template T
  * @typedef {Object} ApiRequestResponse
  * @property {number} status - The HTTP status code of the response.
@@ -44,12 +45,12 @@ export type ApiRequestResponse<T = unknown> = {
 	body: T;
 };
 
-// define the function signature as a type
+// Define the Function Signature as a Type
 export type ApiRequestFn = <T = unknown>(
 	params: ApiRequestParams,
 ) => Promise<ApiRequestResponse<T>>;
 
-// grouping them all together
+// Grouping them all together
 export type ApiRequestMethods = {
 	apiRequest: ApiRequestFn;
 };
@@ -76,3 +77,6 @@ export type CartClearResponse = z.infer<typeof CartClearResponseSchema>;
 
 // Checkout types
 export type CheckoutResponse = z.infer<typeof CheckoutResponseSchema>;
+
+// Order Items types
+export type OrderItemsResponse = z.infer<typeof OrderItemsResponseSchema>;

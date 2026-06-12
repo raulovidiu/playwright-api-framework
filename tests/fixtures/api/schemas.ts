@@ -133,3 +133,21 @@ export const CheckoutResponseSchema = z.strictObject({
 		date: z.iso.datetime(),
 	}),
 });
+
+// Order Item Schema
+export const OrderItemsResponseSchema = z.strictObject({
+	id: z.number().int().positive(),
+	items: z.array(CartItemSchema),
+	total: z.string(),
+	shipping: z.strictObject({
+		firstName: z.string(),
+		lastName: z.string(),
+		address: z.string(),
+		address2: z.string().optional().nullable(),
+		city: z.string(),
+		state: z.string(),
+		zip: z.string(),
+		phone: z.string(),
+	}),
+	date: z.iso.datetime(),
+});
