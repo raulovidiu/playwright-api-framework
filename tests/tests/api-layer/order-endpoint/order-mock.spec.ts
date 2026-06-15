@@ -1,7 +1,5 @@
 import { BASE_URL } from "../../../constants.js";
-import type {
-	OrderItemsResponse,
-} from "../../../fixtures/api/types-guards.js";
+import type { OrderItemsResponse } from "../../../fixtures/api/types-guards.js";
 import { expect, test } from "../../../fixtures/pom/test-options.js";
 import { shippingData } from "../../../test-data/shipping-data.js";
 
@@ -100,8 +98,7 @@ test.describe("Orders API Mocking — Network and Error Scenarios", () => {
 
 		const serviceUnavailableResponse: ApiErrorResponse = {
 			error: "Service Unavailable",
-			message:
-				"The order service is temporarily down. Please try again later.",
+			message: "The order service is temporarily down. Please try again later.",
 		};
 
 		await test.step("Setup Route Mock for 503 Service Unavailable", async () => {
@@ -170,9 +167,7 @@ test.describe("Orders API Mocking — Network and Error Scenarios", () => {
 
 		const mockOrderResponse: OrderItemsResponse = {
 			id: orderId,
-			items: [
-				{ productId: 1, quantity: 2 },
-			],
+			items: [{ productId: 1, quantity: 2 }],
 			total: "49.98",
 			shipping: shippingData,
 			date: new Date().toISOString(),
