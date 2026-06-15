@@ -13,7 +13,6 @@ import { expect, test } from "../../../fixtures/pom/test-options.js";
 import { shippingData } from "../../../test-data/shipping-data.js";
 
 test.describe("Order & Checkout API - Nominal Conditions", () => {
-
 	test.beforeEach(async ({ apiRequest }) => {
 		await test.step("Clear cart to guarantee a known empty state", async () => {
 			await clearCart(apiRequest);
@@ -153,5 +152,4 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			expect(OrderItemsResponseSchema.parse(orderBody)).toBeTruthy();
 		});
 	});
-
 });
