@@ -5,7 +5,7 @@ import type {
 	GetUserResponse,
 	LoginResponse,
 	LogoutResponse,
-} from "../../../../types/health.type.js";
+} from "../../../../types/user.type.js";
 
 test.describe("Authentication API - Nominal Conditions", () => {
 	test("Validate Login with Valid Credentials Returns 200", async ({
