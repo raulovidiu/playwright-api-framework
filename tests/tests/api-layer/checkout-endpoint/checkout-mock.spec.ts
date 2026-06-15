@@ -200,5 +200,4 @@ test.describe("Checkout API Mocking — Network and Error Scenarios", () => {
 			expect(body.order).toBeUndefined();
 		});
 	});
-
 });
