@@ -1,21 +1,21 @@
-import { BASE_URL } from "../../../constants.js";
-import { clearCart } from "../../../fixtures/api/helpers/cart.helper.js";
-import { addProductToCart } from "../../../fixtures/api/helpers/product.helper.js";
+import { BASE_URL } from "@/constants.js";
+import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
+import { addProductToCart } from "@/fixtures/api/helpers/product.helper.js";
 import {
 	CartAddResponseSchema,
 	CartClearResponseSchema,
 	CartDeleteItemResponseSchema,
 	CartResponseSchema,
 	CartUpdateResponseSchema,
-} from "../../../fixtures/api/schemas.js";
+} from "@/fixtures/api/schemas.js";
 import type {
 	CartAddResponse,
 	CartClearResponse,
 	CartDeleteItemResponse,
 	CartResponse,
 	CartUpdateResponse,
-} from "../../../fixtures/api/types-guards.js";
-import { expect, test } from "../../../fixtures/pom/test-options.js";
+} from "@/fixtures/api/types-guards.js";
+import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Cart API - Nominal Conditions", () => {
 	test.beforeEach(async ({ apiRequest }) => {

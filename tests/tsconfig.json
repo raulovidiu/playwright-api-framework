@@ -25,13 +25,14 @@
     "declarationMap": false
   },
   "include": [
-    "playwright.config.ts",
+		"playwright.config.ts",
     "constants.ts",
-    "specs/**/*",
-    "page-objects/**/*",
     "fixtures/**/*",
+    "page-objects/**/*",
     "test-data/**/*",
-    "types/**/*"
+    "types/**/*",
+    "**/*.spec.ts", 
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules", 

@@ -1,16 +1,16 @@
-import { BASE_URL } from "../../../constants.js";
-import { clearCart } from "../../../fixtures/api/helpers/cart.helper.js"; // Import nou adăugat
-import { addProductToCart } from "../../../fixtures/api/helpers/product.helper.js";
+import { BASE_URL } from "@/constants.js";
+import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
+import { addProductToCart } from "@/fixtures/api/helpers/product.helper.js";
 import {
 	CheckoutResponseSchema,
 	OrderItemsResponseSchema,
-} from "../../../fixtures/api/schemas.js";
+} from "@/fixtures/api/schemas.js";
 import type {
 	CheckoutResponse,
 	OrderItemsResponse,
-} from "../../../fixtures/api/types-guards.js";
-import { expect, test } from "../../../fixtures/pom/test-options.js";
-import { shippingData } from "../../../test-data/shipping-data.js";
+} from "@/fixtures/api/types-guards.js";
+import { expect, test } from "@/fixtures/pom/test-options.js";
+import { shippingData } from "@/test-data/shipping-data.js";
 
 test.describe("Order & Checkout API - Nominal Conditions", () => {
 	test.beforeEach(async ({ apiRequest }) => {

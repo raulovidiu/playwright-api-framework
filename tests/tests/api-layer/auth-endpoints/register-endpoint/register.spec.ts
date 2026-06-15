@@ -1,8 +1,8 @@
-import { BASE_URL } from "../../../../constants.js";
-import { createRegisterPayload } from "../../../../fixtures/api/factories/user.factory.js";
-import { RegisterSchema } from "../../../../fixtures/api/schemas.js";
-import type { RegisterResponse } from "../../../../fixtures/api/types-guards.js";
-import { expect, test } from "../../../../fixtures/pom/test-options.js";
+import { BASE_URL } from "@/constants.js";
+import { createRegisterPayload } from "@/fixtures/api/factories/user.factory.js";
+import { RegisterSchema } from "@/fixtures/api/schemas.js";
+import type { RegisterResponse } from "@/fixtures/api/types-guards.js";
+import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Register API - Nominal Conditions", () => {
 	test("Validate Register with Valid Credentials Returns 201", async ({

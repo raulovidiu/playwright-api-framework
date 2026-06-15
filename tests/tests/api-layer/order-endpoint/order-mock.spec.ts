@@ -1,7 +1,7 @@
-import { BASE_URL } from "../../../constants.js";
-import type { OrderItemsResponse } from "../../../fixtures/api/types-guards.js";
-import { expect, test } from "../../../fixtures/pom/test-options.js";
-import { shippingData } from "../../../test-data/shipping-data.js";
+import { BASE_URL } from "@/constants.js";
+import type { OrderItemsResponse } from "@/fixtures/api/types-guards.js";
+import { expect, test } from "@/fixtures/pom/test-options.js";
+import { shippingData } from "@/test-data/shipping-data.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 

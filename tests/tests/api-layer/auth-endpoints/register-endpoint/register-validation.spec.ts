@@ -1,14 +1,14 @@
-import { BASE_URL } from "../../../../constants.js";
+import { BASE_URL } from "@/constants.js";
 import {
 	createPayloadWithInvalidEmail,
 	createPayloadWithoutEmail,
 	createPayloadWithoutName,
 	createPayloadWithoutPassword,
 	createRegisterPayload,
-} from "../../../../fixtures/api/factories/user.factory.js";
-import { RegisterErrorSchema } from "../../../../fixtures/api/schemas.js";
-import type { RegisterErrorResponse } from "../../../../fixtures/api/types-guards.js";
-import { expect, test } from "../../../../fixtures/pom/test-options.js";
+} from "@/fixtures/api/factories/user.factory.js";
+import { RegisterErrorSchema } from "@/fixtures/api/schemas.js";
+import type { RegisterErrorResponse } from "@/fixtures/api/types-guards.js";
+import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Register API — Field Validation", () => {
 	test("Register with missing email returns 400", async ({ apiRequest }) => {
