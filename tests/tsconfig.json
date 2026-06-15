@@ -1,26 +1,42 @@
 {
-	"compilerOptions": {
-		"module": "nodenext",
-		"moduleResolution": "nodenext",
-		"target": "esnext",
-		"types": ["node"],
-		"lib": ["esnext"],
-		"sourceMap": true,
-		"declaration": true,
-		"declarationMap": true,
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-		"strict": true,
-		"jsx": "react-jsx",
-		"isolatedModules": true,
-		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force",
-		"skipLibCheck": true
-	},
-	"exclude": ["node_modules", "dist", "playwright-report", "test-results"]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["esnext"],
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "playwright.config.ts",
+    "constants.ts",
+    "specs/**/*",
+    "page-objects/**/*",
+    "fixtures/**/*",
+    "test-data/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules", 
+    "playwright-report", 
+    "test-results",
+    "**/*.spec.js"
+  ]
 }
