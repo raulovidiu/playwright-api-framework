@@ -1,10 +1,10 @@
 import { test as base } from "@playwright/test";
 import { HomePage } from "@/page-objects/home-page.js";
+import { LoginPage } from "@/page-objects/login-page.js";
 
 export type FrameworkFixtures = {
 	homePage: HomePage;
-
-	// navPage: NavPage;
+	loginPage: LoginPage;
 };
 
 export const test = base.extend<FrameworkFixtures>({
@@ -12,9 +12,9 @@ export const test = base.extend<FrameworkFixtures>({
 		await use(new HomePage(page));
 	},
 
-	// navPage: async ({ page }, use) => {
-	//     await use(new NavPage(page));
-	// },
+	loginPage: async ({ page }, use) => {
+		await use(new LoginPage(page));
+	},
 });
 
 export { expect } from "@playwright/test";
