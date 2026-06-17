@@ -2,11 +2,13 @@ import { test as base } from "@playwright/test";
 import { HomePage } from "@/page-objects/home-page.js";
 import { LoginPage } from "@/page-objects/login-page.js";
 import { RegisterPage } from "@/page-objects/register-page.js";
+import { CartPage } from "@/page-objects/cart-page.js";
 
 export type FrameworkFixtures = {
 	homePage: HomePage;
 	loginPage: LoginPage;
 	registerPage: RegisterPage;
+	cartPage: CartPage;
 };
 
 export const test = base.extend<FrameworkFixtures>({
@@ -20,6 +22,10 @@ export const test = base.extend<FrameworkFixtures>({
 
 	registerPage: async ({ page }, use) => {
 		await use(new RegisterPage(page));
+	},
+
+	cartPage: async ({ page }, use) => {
+		await use(new CartPage(page));
 	},
 });
 
