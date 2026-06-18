@@ -58,7 +58,7 @@ test.describe("Checkout UI and Form Validations", () => {
 
 		await test.step("Verify browser HTML5 validation triggers for required fields", async () => {
 			const isInvalid = await checkoutPage.firstName.evaluate(
-				(el: HTMLInputElement) => !el.checkValidity(),
+				(el) => !(el as any).checkValidity(),
 			);
 			expect(isInvalid).toBe(true);
 		});
@@ -83,7 +83,7 @@ test.describe("Checkout UI and Form Validations", () => {
 
 		await test.step("Verify ZIP code field triggers validation error", async () => {
 			const isInvalid = await checkoutPage.zip.evaluate(
-				(el: HTMLInputElement) => !el.checkValidity(),
+				(el) => !(el as any).checkValidity(),
 			);
 			expect(isInvalid).toBe(true);
 		});
