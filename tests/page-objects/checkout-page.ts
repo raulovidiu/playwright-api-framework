@@ -24,6 +24,10 @@ export class CheckoutPage {
 		return this.page.locator("#address");
 	}
 
+	get address2(): Locator {
+		return this.page.locator("#address2");
+	}
+
 	get city(): Locator {
 		return this.page.locator("#city");
 	}
@@ -117,6 +121,7 @@ export class CheckoutPage {
 		firstName: string;
 		lastName: string;
 		address: string;
+		address2?: string;
 		city: string;
 		state: string;
 		zip: string;
@@ -125,6 +130,9 @@ export class CheckoutPage {
 		await this.firstName.fill(shipping.firstName);
 		await this.lastName.fill(shipping.lastName);
 		await this.address.fill(shipping.address);
+		if (shipping.address2) {
+			await this.address2.fill(shipping.address2);
+		}
 		await this.city.fill(shipping.city);
 		await this.state.selectOption(shipping.state);
 		await this.zip.fill(shipping.zip);
@@ -165,6 +173,7 @@ export class CheckoutPage {
 			firstName: string;
 			lastName: string;
 			address: string;
+			address2?: string;
 			city: string;
 			state: string;
 			zip: string;

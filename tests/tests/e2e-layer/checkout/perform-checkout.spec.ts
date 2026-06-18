@@ -1,4 +1,6 @@
 import { expect, test } from "@/fixtures/pom/test-options.js";
+import { cardData } from "@/test-data/card-data.js";
+import { shippingData } from "@/test-data/shipping-data.js";
 
 test.describe("Checkout Flow", () => {
 	test.beforeEach(async ({ checkoutPage }) => {
@@ -48,23 +50,7 @@ test.describe("Checkout Flow", () => {
 		});
 
 		await test.step("Fill form and submit order", async () => {
-			await checkoutPage.completeCheckout(
-				{
-					firstName: "John",
-					lastName: "Doe",
-					address: "123 Main Street",
-					city: "Grand Rapids",
-					state: "MI",
-					zip: "49501",
-					phone: "555-123-4567",
-				},
-				{
-					cardName: "John Doe",
-					cardNumber: "4111111111111111",
-					expiry: "12/25",
-					cvv: "123",
-				},
-			);
+			await checkoutPage.completeCheckout(shippingData, cardData);
 		});
 
 		await test.step("Verify order confirmation modal and generated Order ID", async () => {

@@ -3,8 +3,8 @@ export const shippingData = {
 	lastName: "Carter",
 	address: "1600 Pennsylvania Avenue NW",
 	address2: "",
-	city: "Washington",
-	state: "DC",
+	city: "New York",
+	state: "NY",
 	zip: "20500",
 	phone: "2024561111",
 };
