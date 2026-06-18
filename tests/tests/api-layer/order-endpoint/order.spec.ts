@@ -11,6 +11,7 @@ import type {
 } from "@/fixtures/api/types-guards.js";
 import { expect, test } from "@/fixtures/pom/test-options.js";
 import { shippingData } from "@/test-data/shipping-data.js";
+import { saveArtifact } from "@/utils/save-artifact.js";
 
 test.describe("Order & Checkout API - Nominal Conditions", () => {
 	test.beforeEach(async ({ apiRequest }) => {
@@ -76,6 +77,9 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			orderBody = body;
 
 			expect(orderStatus).toBe(200);
+
+			// Capture Placed Order Information
+			await saveArtifact("placed-order", checkoutBody);
 		});
 
 		await test.step("Response body matches OrderItemResponseSchema", async () => {

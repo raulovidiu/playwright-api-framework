@@ -3,6 +3,7 @@ import { createRegisterPayload } from "@/fixtures/api/factories/user.factory.js"
 import { RegisterSchema } from "@/fixtures/api/schemas.js";
 import type { RegisterResponse } from "@/fixtures/api/types-guards.js";
 import { expect, test } from "@/fixtures/pom/test-options.js";
+import { saveArtifact } from "@/utils/save-artifact.js";
 
 test.describe("Register API - Nominal Conditions", () => {
 	test("Validate Register with Valid Credentials Returns 201", async ({
@@ -23,6 +24,9 @@ test.describe("Register API - Nominal Conditions", () => {
 			responseBody = body;
 
 			expect(responseStatus).toBe(201);
+
+			// Capture the Created User Payload
+			await saveArtifact("registered-user", responseBody);
 		});
 
 		await test.step("Response Body Matches RegisterSchema", async () => {

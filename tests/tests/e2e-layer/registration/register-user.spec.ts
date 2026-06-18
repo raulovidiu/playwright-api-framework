@@ -1,7 +1,7 @@
 import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Registration", () => {
-	test.describe("Happy Path", () => {
+	test.describe("Register User - Nominal Conditions", () => {
 		test.beforeEach(async ({ registerPage }) => {
 			await test.step("Navigate to registration page", async () => {
 				await registerPage.navigate();

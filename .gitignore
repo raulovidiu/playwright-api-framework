@@ -49,6 +49,7 @@ tsconfig.tsbuildinfo
 /tests/playwright/.cache/
 /tests/blob-report/
 /tests/coverage/
+runtime-artifacts/
 
 # ================================
 # Editor & IDE
