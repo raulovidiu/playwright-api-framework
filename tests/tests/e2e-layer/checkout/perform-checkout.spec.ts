@@ -1,0 +1,78 @@
+import { expect, test } from "@/fixtures/pom/test-options.js";
+
+test.describe("Checkout Flow", () => {
+	test.beforeEach(async ({ checkoutPage }) => {
+		await test.step("Clear cart and add a product via API", async () => {
+			await checkoutPage.clearCartViaApi();
+			await checkoutPage.addItemViaApi(1, 1);
+		});
+	});
+
+	test("Redirect to cart if cart is empty", async ({ page, checkoutPage }) => {
+		await test.step("Clear cart via API to ensure it is empty", async () => {
+			await checkoutPage.clearCartViaApi();
+		});
+
+		await test.step("Navigate to checkout page", async () => {
+			await checkoutPage.navigate();
+		});
+
+		await test.step("Verify redirection back to cart page", async () => {
+			await page.waitForURL("/cart.html");
+		});
+	});
+
+	test("Display order summary details", async ({ checkoutPage }) => {
+		await test.step("Navigate to checkout page", async () => {
+			await checkoutPage.navigate();
+		});
+
+		await test.step("Verify order summary section visibility", async () => {
+			await expect(checkoutPage.orderSummary).toBeVisible();
+		});
+
+		await test.step("Verify the item is listed in the summary", async () => {
+			await expect(checkoutPage.orderItems).toHaveCount(1);
+		});
+
+		await test.step("Verify subtotal, tax, and total fields are displayed", async () => {
+			await expect(checkoutPage.subtotal).toBeVisible();
+			await expect(checkoutPage.tax).toBeVisible();
+			await expect(checkoutPage.total).toBeVisible();
+		});
+	});
+
+	test("Complete checkout successfully", async ({ checkoutPage }) => {
+		await test.step("Navigate to checkout page", async () => {
+			await checkoutPage.navigate();
+		});
+
+		await test.step("Fill form and submit order", async () => {
+			await checkoutPage.completeCheckout(
+				{
+					firstName: "John",
+					lastName: "Doe",
+					address: "123 Main Street",
+					city: "Grand Rapids",
+					state: "MI",
+					zip: "49501",
+					phone: "555-123-4567",
+				},
+				{
+					cardName: "John Doe",
+					cardNumber: "4111111111111111",
+					expiry: "12/25",
+					cvv: "123",
+				},
+			);
+		});
+
+		await test.step("Verify order confirmation modal and generated Order ID", async () => {
+			await expect(checkoutPage.orderConfirmation).toBeVisible();
+			await expect(checkoutPage.orderConfirmation).toContainText(
+				"Order Confirmed",
+			);
+			await expect(checkoutPage.orderId).not.toBeEmpty();
+		});
+	});
+});
