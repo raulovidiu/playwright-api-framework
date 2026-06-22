@@ -121,16 +121,4 @@ export class CartPage {
 		await this.clearCartBtn.click();
 	}
 
-	/**
-	 * Adds an item to the cart directly via the API, bypassing the UI.
-	 * Useful for arranging test state without coupling tests to UI flows.
-	 * @param productId - ID of the product to add.
-	 * @param quantity - Quantity to add. Defaults to 1.
-	 */
-	async addItemViaApi(productId: number, quantity: number = 1): Promise<void> {
-		await this.page.request.post("http://localhost:3000/api/cart", {
-			data: { productId, quantity },
-		});
-	}
-
 }
