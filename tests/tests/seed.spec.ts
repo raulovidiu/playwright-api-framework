@@ -9,7 +9,7 @@
  *
  * Agents should follow the patterns here when generating new tests.
  */
-import { expect, test } from "../fixtures/pom/test-options.js";
+import { expect, test } from "../fixtures/test-options.js";
 
 const BASE_URL = "http://localhost:3000";
 

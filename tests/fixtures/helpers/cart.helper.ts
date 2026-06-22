@@ -1,5 +1,5 @@
-import { BASE_URL } from "../../../constants.js";
-import { ApiRequestFn } from "../types-guards.js";
+import { BASE_URL } from "../../constants.js";
+import { ApiRequestFn } from "../schemas/type-guards.js";
 
 /**
  * Clears the cart before each test so every

@@ -1,4 +1,4 @@
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/test-options.js";
 
 test.describe("Registration", () => {
 	test.describe("Form Validation and Navigation", () => {

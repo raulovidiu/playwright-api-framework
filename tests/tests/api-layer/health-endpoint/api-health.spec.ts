@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/constants.js";
-import { HealthSchema } from "@/fixtures/api/schemas.js";
-import type { HealthResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { HealthSchema } from "@/fixtures/schemas/schemas.js";
+import type { HealthResponse } from "@/fixtures/schemas/type-guards.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 
 test.describe("API Health Endpoint", () => {
 	test("API Health Status", async ({ apiRequest }) => {

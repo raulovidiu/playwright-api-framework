@@ -1,5 +1,5 @@
-import { BASE_URL } from "../../../constants.js";
-import type { ApiRequestFn } from "../types-guards.js"; //
+import { BASE_URL } from "../../constants.js";
+import type { ApiRequestFn } from "../schemas/type-guards.js"; //
 
 export async function addProductToCart(
 	apiRequest: ApiRequestFn,

@@ -1,11 +1,11 @@
 import { test as base } from "@playwright/test";
-import { apiRequest as apiRequestOriginal } from "./plain-function.js";
+import { apiRequest as apiRequestOriginal } from "../plain-function.js";
 import type {
 	ApiRequestFn,
 	ApiRequestMethods,
 	ApiRequestParams,
 	ApiRequestResponse,
-} from "./types-guards.js";
+} from "../schemas/type-guards.js";
 
 /**
  * Same apiRequest contract as api-request-fixture.ts, but backed by

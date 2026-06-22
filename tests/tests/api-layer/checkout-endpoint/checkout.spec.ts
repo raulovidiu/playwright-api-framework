@@ -1,9 +1,9 @@
 import { BASE_URL } from "@/constants.js";
-import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
-import { addProductToCart } from "@/fixtures/api/helpers/product.helper.js";
-import { CheckoutResponseSchema } from "@/fixtures/api/schemas.js";
-import type { CheckoutResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { clearCart } from "@/fixtures/helpers/cart.helper.js";
+import { addProductToCart } from "@/fixtures/helpers/product.helper.js";
+import { CheckoutResponseSchema } from "@/fixtures/schemas/schemas.js";
+import type { CheckoutResponse } from "@/fixtures/schemas/type-guards.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 import { shippingData } from "@/test-data/shipping-data.js";
 
 test.describe("Checkout API - Nominal Conditions", () => {

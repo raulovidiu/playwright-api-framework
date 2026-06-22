@@ -1,4 +1,4 @@
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/test-options.js";
 
 test.describe("Checkout UI and Form Validations", () => {
 	test.beforeEach(async ({ clearCart, addProductToCart, checkoutPage }) => {

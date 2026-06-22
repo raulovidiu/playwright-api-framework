@@ -1,6 +1,6 @@
 import { test as base, mergeTests, request } from "@playwright/test";
-import { test as apiHelpersFixture } from "../api/api-helpers-fixture.js";
-import { test as pageObjectFixture } from "./page-object-fixture.js";
+import { test as apiHelpersFixture } from "./api/api-helpers.fixture.js";
+import { test as pageObjectFixture } from "./pom/page-object.fixture.js";
 
 /**
  * Entry point for UI specs (anything using `page`, `cartPage`, etc.).

@@ -1,6 +1,6 @@
 import { createRegisterPayload } from "../factories/user.factory.js";
-import { ApiRequestResponse, RegisterResponse } from "../types-guards.js";
-import { BASE_URL } from "../../../constants.js";
+import { ApiRequestResponse, RegisterResponse } from "../schemas/type-guards.js";
+import { BASE_URL } from "../../constants.js";
 
 
 // Registers a fresh user and returns the payload used

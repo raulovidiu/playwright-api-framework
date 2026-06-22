@@ -1,7 +1,7 @@
-import { clearCart as clearCartFn } from "./helpers/cart.helper.js";
-import { addProductToCart as addProductToCartFn } from "./helpers/product.helper.js";
-import { test as uiApiRequestFixture } from "./ui-api-request-fixture.js";
-import type { ApiRequestFn } from "./types-guards.js";
+import { clearCart as clearCartFn } from "../helpers/cart.helper.js";
+import { addProductToCart as addProductToCartFn } from "../helpers/product.helper.js";
+import { test as uiApiRequestFixture } from "./ui-api-request.fixture.js";
+import type { ApiRequestFn } from "../schemas/type-guards.js";
 
 export type ApiHelperFixtures = {
 	clearCart: () => Promise<void>;
