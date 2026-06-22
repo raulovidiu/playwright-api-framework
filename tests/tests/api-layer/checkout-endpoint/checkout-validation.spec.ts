@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
 import { addProductToCart } from "@/fixtures/api/helpers/product.helper.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 import { shippingData } from "@/test-data/shipping-data.js";
 
 test.describe("Checkout API - Negative Cases", () => {

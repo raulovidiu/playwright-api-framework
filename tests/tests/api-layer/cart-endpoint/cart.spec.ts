@@ -15,7 +15,7 @@ import type {
 	CartResponse,
 	CartUpdateResponse,
 } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 
 test.describe("Cart API - Nominal Conditions", () => {
 	test.beforeEach(async ({ apiRequest }) => {

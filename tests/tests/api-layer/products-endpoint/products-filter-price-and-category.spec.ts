@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/constants.js";
 import { ProductsSchema } from "@/fixtures/api/schemas.js";
 import type { ProductsResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 
 test.describe("Products API - maxPrice Query Param", () => {
 	const MAX_PRICE = 116;

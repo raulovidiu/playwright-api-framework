@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/constants.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 import type { LoginResponse } from "@/types/user.type.js";
 
 type ApiErrorResponse = { error: string; message?: string };
