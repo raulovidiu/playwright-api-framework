@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/constants.js";
-import { ProductSchema } from "@/fixtures/api/schemas.js";
-import type { ProductResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { ProductSchema } from "@/fixtures/schemas/schemas.js";
+import type { ProductResponse } from "@/fixtures/schemas/type-guards.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 
 test.describe("Product API - Invoke and Verify a Single Product", () => {
 	test("Validate Retrieve Product by ID", async ({ apiRequest }) => {

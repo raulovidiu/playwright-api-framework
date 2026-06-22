@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/constants.js";
-import { registerFreshUser } from "@/fixtures/api/helpers/user.helper.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { registerFreshUser } from "@/fixtures/helpers/user.helper.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 import type {
 	GetUserResponse,
 	LoginResponse,

@@ -1,4 +1,4 @@
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/test-options.js";
 
 test.describe("Homepage Rendition", () => {
 	test.beforeEach(async ({ homePage }) => {

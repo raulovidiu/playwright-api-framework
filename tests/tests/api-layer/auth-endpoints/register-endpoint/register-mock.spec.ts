@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/constants.js";
-import { createRegisterPayload } from "@/fixtures/api/factories/user.factory.js";
-import type { RegisterResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { createRegisterPayload } from "@/fixtures/factories/user.factory.js";
+import type { RegisterResponse } from "@/fixtures/schemas/type-guards.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 

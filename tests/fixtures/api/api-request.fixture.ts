@@ -1,11 +1,11 @@
 import { test as base } from "@playwright/test";
-import { apiRequest as apiRequestOriginal } from "./plain-function.js";
+import { apiRequest as apiRequestOriginal } from "../plain-function.js";
 import type {
   ApiRequestFn,
   ApiRequestMethods,
   ApiRequestParams,
   ApiRequestResponse,
-} from "./types-guards.js";
+} from "../schemas/type-guards.js";
 export const test = base.extend<ApiRequestMethods>({
   /**
    * Provides a function to make API requests.

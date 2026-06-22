@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/constants.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 import type { MockHealthResponse } from "@/types/health.type.js";
 
 test.describe("API health mocking - Negative cases and Latency", () => {

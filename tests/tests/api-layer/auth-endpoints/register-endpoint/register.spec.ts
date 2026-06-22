@@ -1,8 +1,8 @@
 import { BASE_URL } from "@/constants.js";
-import { createRegisterPayload } from "@/fixtures/api/factories/user.factory.js";
-import { RegisterSchema } from "@/fixtures/api/schemas.js";
-import type { RegisterResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.api.js";
+import { createRegisterPayload } from "@/fixtures/factories/user.factory.js";
+import { RegisterSchema } from "@/fixtures/schemas/schemas.js";
+import type { RegisterResponse } from "@/fixtures/schemas/type-guards.js";
+import { expect, test } from "@/fixtures/test-options.api.js";
 import { saveArtifact } from "@/utils/save-artifact.js";
 
 test.describe("Register API - Nominal Conditions", () => {

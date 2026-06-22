@@ -1,5 +1,5 @@
 import { test as base, request } from "@playwright/test";
-import { test as apiRequestFixture } from "../api/api-request-fixture.js";
+import { test as apiRequestFixture } from "./api/api-request.fixture.js";
 
 /**
  * Entry point for PURE API specs (no `page`, no browser, no UI).
