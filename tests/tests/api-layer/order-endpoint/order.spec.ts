@@ -9,7 +9,7 @@ import type {
 	CheckoutResponse,
 	OrderItemsResponse,
 } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 import { shippingData } from "@/test-data/shipping-data.js";
 import { saveArtifact } from "@/utils/save-artifact.js";
 

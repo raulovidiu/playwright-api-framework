@@ -2,7 +2,7 @@ import { BASE_URL } from "@/constants.js";
 import { createRegisterPayload } from "@/fixtures/api/factories/user.factory.js";
 import { RegisterSchema } from "@/fixtures/api/schemas.js";
 import type { RegisterResponse } from "@/fixtures/api/types-guards.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 import { saveArtifact } from "@/utils/save-artifact.js";
 
 test.describe("Register API - Nominal Conditions", () => {

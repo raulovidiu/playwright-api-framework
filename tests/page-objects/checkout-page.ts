@@ -191,25 +191,6 @@ export class CheckoutPage {
 		await this.placeOrder();
 	}
 
-	/**
-	 * Adds an item to the cart directly via the API, bypassing the UI.
-	 * Useful for arranging test state without coupling tests to UI flows.
-	 * @param productId - ID of the product to add.
-	 * @param quantity - Quantity to add. Defaults to 1.
-	 */
-	async addItemViaApi(productId: number, quantity: number = 1): Promise<void> {
-		await this.page.request.post(`${BASE_URL}/api/cart`, {
-			data: { productId, quantity },
-		});
-	}
-
-	/**
-	 * Clears the cart directly via the API, bypassing the UI.
-	 */
-	async clearCartViaApi(): Promise<void> {
-		await this.page.request.delete(`${BASE_URL}/api/cart`);
-	}
-
 	// Assertions
 
 	/**

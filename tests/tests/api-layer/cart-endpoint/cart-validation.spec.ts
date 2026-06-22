@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 
 test.describe("Cart API - Negative Cases", () => {
 	test.describe("POST /api/cart", () => {

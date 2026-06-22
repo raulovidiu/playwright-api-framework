@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/constants.js";
 import { registerFreshUser } from "@/fixtures/api/helpers/user.helper.js";
-import { expect, test } from "@/fixtures/pom/test-options.js";
+import { expect, test } from "@/fixtures/pom/test-options.api.js";
 
 test.describe("Authentication API - Negative Cases", () => {
 	test("Validate Login with Wrong Password Returns 401", async ({

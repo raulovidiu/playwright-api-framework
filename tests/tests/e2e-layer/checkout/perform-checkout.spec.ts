@@ -1,18 +1,23 @@
+import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
 import { expect, test } from "@/fixtures/pom/test-options.js";
 import { cardData } from "@/test-data/card-data.js";
 import { shippingData } from "@/test-data/shipping-data.js";
 
 test.describe("Checkout Flow", () => {
-	test.beforeEach(async ({ checkoutPage }) => {
+	test.beforeEach(async ({ clearCart, addProductToCart }) => {
 		await test.step("Clear cart and add a product via API", async () => {
-			await checkoutPage.clearCartViaApi();
-			await checkoutPage.addItemViaApi(1, 1);
+			await clearCart();
+			await addProductToCart(1, 1);
 		});
 	});
 
-	test("Redirect to cart if cart is empty", async ({ page, checkoutPage }) => {
+	test("Redirect to cart if cart is empty", async ({
+		clearCart,
+		checkoutPage,
+		page,
+	}) => {
 		await test.step("Clear cart via API to ensure it is empty", async () => {
-			await checkoutPage.clearCartViaApi();
+			await clearCart();
 		});
 
 		await test.step("Navigate to checkout page", async () => {

@@ -1,10 +1,10 @@
 import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Checkout UI and Form Validations", () => {
-	test.beforeEach(async ({ checkoutPage }) => {
+	test.beforeEach(async ({ clearCart, addProductToCart, checkoutPage }) => {
 		await test.step("Prepare cart with an item via API and navigate to checkout", async () => {
-			await checkoutPage.clearCartViaApi();
-			await checkoutPage.addItemViaApi(1, 1);
+			await clearCart();
+			await addProductToCart(1, 1);
 			await checkoutPage.navigate();
 		});
 	});

@@ -1,10 +1,9 @@
-import { clearCart } from "@/fixtures/api/helpers/cart.helper.js";
 import { expect, test } from "@/fixtures/pom/test-options.js";
 
 test.describe("Shopping Cart", () => {
-	test.beforeEach(async ({ apiRequest, page }) => {
+	test.beforeEach(async ({ clearCart, page }) => {
 		await test.step("Clear cart via API and navigate to home page", async () => {
-			await clearCart(apiRequest);
+			await clearCart();
 			await page.goto("/");
 		});
 	});
