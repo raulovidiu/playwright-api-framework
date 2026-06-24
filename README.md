@@ -6,12 +6,13 @@ End-to-end automated test suite for the [E-commerce](../app/README.md) demo appl
 
 ## Tech Stack
 
-- [Playwright](https://playwright.dev/) `^1.60.0` – E2E testing framework
+- [Playwright](https://playwright.dev/) `^1.61.0` – E2E testing framework
 - [TypeScript](https://www.typescriptlang.org/) `6.0.3`
 - [Zod](https://zod.dev/) `4.4.3` – data validation / schema parsing
 - [@faker-js/faker](https://fakerjs.dev/) `10.4.0` – test data generation
 - [Biome](https://biomejs.dev/) `^2.4.16` – linting and code formatting
-- [dotenv](https://github.com/motdotla/dotenv) – environment variable management
+- [dotenv](https://github.com/motdotla/dotenv) `17.4.2` – environment variable management
+- [cross-env](https://github.com/75lb/cross-env) `10.1.0` – cross-platform environment variables
 
 ---
 
@@ -33,21 +34,19 @@ npx playwright install
 
 ## Environment Configuration
 
-Environment variable files are located in the `./env/` directory:
+Environment variables are managed using `dotenv`. To configure your local environment, create a `.env.local` file in the root directory with the following variables:
 
-| File | Environment |
-|---|---|
-| `env/.env.dev` | Development (default) |
-| `env/.env.<ENVIRONMENT>` | Any other environment |
+```env
+BASE_URL=http://localhost:3000
+USER_EMAIL=demo@techmart.com
+USER_PASSWORD=demo123
+```
 
-The `ENVIRONMENT` system variable controls which `.env` file is loaded. If not set, `.env.dev` is used by default.
-
-**Demo credentials for the application:**
-
-| Field | Value |
-|---|---|
-| Email | `demo@techmart.com` |
-| Password | `demo123` |
+| Variable | Description | Default / Demo Value |
+|---|---|---|
+| `BASE_URL` | The URL where the application under test is running | `http://localhost:3000` |
+| `USER_EMAIL` | Demo user authentication email | `demo@techmart.com` |
+| `USER_PASSWORD` | Demo user authentication password | `demo123` |
 
 ---
 
@@ -56,6 +55,12 @@ The `ENVIRONMENT` system variable controls which `.env` file is loaded. If not s
 ```bash
 # Run all tests (headless)
 npm test
+
+# Run API layer tests only
+npm run test:api
+
+# Run E2E tests only
+npm run test:e2e
 
 # Run with a visible browser
 npm run test:headed
@@ -74,8 +79,9 @@ npm run test:report
 ```
 .
 ├── tests/              # Test files
-├── env/                # Per-environment .env files
-│   └── .env.dev
+│   ├── api-layer/      # API framework tests
+│   └── e2e/            # End-to-end user flows
+├── .env.local          # Local environment variables (do not commit)
 ├── playwright.config.ts
 ├── package.json
 └── README.md
@@ -93,7 +99,7 @@ Key settings from `playwright.config.ts`:
 | Parallel execution | Yes (`fullyParallel: true`) |
 | Workers | 4 |
 | Browser | Firefox (Desktop) |
-| Base URL | `http://localhost:3000` |
+| Base URL | Configured via `BASE_URL` |
 | Retries (CI) | 2 |
 | Screenshot | On failure |
 | Video | On first retry |
@@ -136,5 +142,6 @@ The E-commerce application exposes the following features covered by the test su
 - Shopping cart management
 - User authentication and registration
 - Checkout process
+- Orders management
 
 The REST API runs at `http://localhost:3000/api`. Full details in the [application README](../app/README.md).
