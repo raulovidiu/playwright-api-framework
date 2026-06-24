@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../constants.js";
 import { ApiRequestFn } from "../schemas/type-guards.js";
 
 /**
@@ -6,5 +5,5 @@ import { ApiRequestFn } from "../schemas/type-guards.js";
  * No authorisation is needed — the cart is
  */
 export async function clearCart(apiRequest: ApiRequestFn): Promise<void> {
-	await apiRequest({ method: "DELETE", url: "/api/cart", baseUrl: BASE_URL });
+	await apiRequest({ method: "DELETE", url: "/api/cart" });
 }

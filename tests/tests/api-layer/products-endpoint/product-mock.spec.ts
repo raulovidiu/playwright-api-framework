@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import type { ProductResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 
@@ -23,13 +22,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for 500 Server Error", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.fulfill({
-					status: 500,
-					contentType: "application/json",
-					json: mockErrorResponse,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.fulfill({
+						status: 500,
+						contentType: "application/json",
+						json: mockErrorResponse,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Application Handles 500 Status Code", async () => {
@@ -37,7 +39,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ApiErrorResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(500);
 			expect(body).toHaveProperty("error");
@@ -49,9 +51,12 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		page,
 	}) => {
 		await test.step("Setup Route Mock to Abort the Network Request", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.abort("failed");
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.abort("failed");
+				},
+			);
 		});
 
 		await test.step("Verify Request Throws an Exception Due to Network Failure", async () => {
@@ -64,7 +69,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				} catch {
 					return true;
 				}
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(didThrow).toBe(true);
 		});
@@ -74,15 +79,18 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		page,
 	}) => {
 		await test.step("Setup Route Mock with Artificial 3-Second Delay", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await new Promise((resolve) => setTimeout(resolve, 3000));
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await new Promise((resolve) => setTimeout(resolve, 3000));
 
-				await route.fulfill({
-					status: 200,
-					contentType: "application/json",
-					json: MOCK_PRODUCT,
-				});
-			});
+					await route.fulfill({
+						status: 200,
+						contentType: "application/json",
+						json: MOCK_PRODUCT,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Product Endpoint Resolves Successfully After Delay", async () => {
@@ -90,7 +98,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ProductResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(200);
 			expect(body.id).toBe(1);
@@ -107,13 +115,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock to Return a Malformed Payload", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.fulfill({
-					status: 200,
-					contentType: "application/json",
-					json: malformedPayload,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.fulfill({
+						status: 200,
+						contentType: "application/json",
+						json: malformedPayload,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Malformed Payload Exposes Missing Required Fields", async () => {
@@ -121,7 +132,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as Partial<ProductResponse>;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(200);
 
@@ -142,13 +153,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for Out-of-Stock Product", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.fulfill({
-					status: 200,
-					contentType: "application/json",
-					json: outOfStockProduct,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.fulfill({
+						status: 200,
+						contentType: "application/json",
+						json: outOfStockProduct,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Product is Returned with stock of 0", async () => {
@@ -156,7 +170,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ProductResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(200);
 			expect(body.stock).toBe(0);
@@ -173,13 +187,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for Product with Negative Price", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.fulfill({
-					status: 200,
-					contentType: "application/json",
-					json: negativelyPricedProduct,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.fulfill({
+						status: 200,
+						contentType: "application/json",
+						json: negativelyPricedProduct,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Negative Price is Exposed as an Invalid State", async () => {
@@ -187,7 +204,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ProductResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(200);
 
@@ -206,13 +223,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for 404 Not Found", async () => {
-			await page.route(`${BASE_URL}/api/products/9999`, async (route) => {
-				await route.fulfill({
-					status: 404,
-					contentType: "application/json",
-					json: notFoundResponse,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/9999`,
+				async (route) => {
+					await route.fulfill({
+						status: 404,
+						contentType: "application/json",
+						json: notFoundResponse,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify 404 Status Code and Error Payload", async () => {
@@ -220,7 +240,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ApiErrorResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/9999`);
+			}, `${process.env.BASE_URL}/api/products/9999`);
 
 			expect(status).toBe(404);
 			expect(body.error).toBe("Not Found");
@@ -236,13 +256,16 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for 503 Service Unavailable", async () => {
-			await page.route(`${BASE_URL}/api/products/1`, async (route) => {
-				await route.fulfill({
-					status: 503,
-					contentType: "application/json",
-					json: serviceUnavailableResponse,
-				});
-			});
+			await page.route(
+				`${process.env.BASE_URL}/api/products/1`,
+				async (route) => {
+					await route.fulfill({
+						status: 503,
+						contentType: "application/json",
+						json: serviceUnavailableResponse,
+					});
+				},
+			);
 		});
 
 		await test.step("Verify Application Handles 503 Status Code", async () => {
@@ -250,7 +273,7 @@ test.describe("Product API Mocking - Negative Cases and Latency", () => {
 				const res = await fetch(url);
 				const body = (await res.json()) as ApiErrorResponse;
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/products/1`);
+			}, `${process.env.BASE_URL}/api/products/1`);
 
 			expect(status).toBe(503);
 			expect(body.error).toBe("Service Unavailable");

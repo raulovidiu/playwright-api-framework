@@ -1,6 +1,5 @@
 import { createRegisterPayload } from "../factories/user.factory.js";
 import { ApiRequestResponse, RegisterResponse } from "../schemas/type-guards.js";
-import { BASE_URL } from "../../constants.js";
 
 
 // Registers a fresh user and returns the payload used
@@ -19,7 +18,6 @@ export async function registerFreshUser(
 	const { status } = await apiRequest<RegisterResponse>({
 		method: "POST",
 		url: "/api/register",
-		baseUrl: BASE_URL,
 		body: payload,
 	});
 

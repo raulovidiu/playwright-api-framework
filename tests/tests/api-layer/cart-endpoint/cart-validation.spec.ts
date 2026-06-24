@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 
@@ -11,7 +10,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 999999, quantity: 1 },
 				});
 
@@ -26,7 +24,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { quantity: 1 },
 				});
 
@@ -41,7 +38,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1 },
 				});
 
@@ -54,7 +50,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: 0 },
 				});
 
@@ -69,7 +64,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: -1 },
 				});
 
@@ -84,7 +78,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: {},
 				});
 
@@ -105,7 +98,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "PUT",
 					url: "/api/cart/999999",
-					baseUrl: BASE_URL,
 					body: { quantity: 3 },
 				});
 
@@ -121,7 +113,6 @@ test.describe("Cart API - Negative Cases", () => {
 				await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: 2 },
 				});
 			});
@@ -130,7 +121,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "PUT",
 					url: "/api/cart/1",
-					baseUrl: BASE_URL,
 					body: { quantity: 0 },
 				});
 
@@ -146,7 +136,6 @@ test.describe("Cart API - Negative Cases", () => {
 				await apiRequest({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: 1 },
 				});
 			});
@@ -155,7 +144,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "PUT",
 					url: "/api/cart/1",
-					baseUrl: BASE_URL,
 					body: {},
 				});
 
@@ -174,7 +162,6 @@ test.describe("Cart API - Negative Cases", () => {
 				const { status } = await apiRequest({
 					method: "DELETE",
 					url: "/api/cart/999999",
-					baseUrl: BASE_URL,
 				});
 
 				expect(status).toBe(200);

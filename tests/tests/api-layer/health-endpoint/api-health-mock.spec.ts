@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 import type { MockHealthResponse } from "@/types/health.type.js";
 
@@ -11,7 +10,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock for 500 Server Error", async () => {
-			await page.route(`${BASE_URL}/api/health`, async (route) => {
+			await page.route(`${process.env.BASE_URL}/api/health`, async (route) => {
 				await route.fulfill({
 					status: 500,
 					contentType: "application/json",
@@ -27,7 +26,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 				const res = await fetch(url);
 				const body = await res.json();
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/health`);
+			}, `${process.env.BASE_URL}/api/health`);
 
 			expect(status).toBe(500);
 
@@ -43,7 +42,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 		};
 
 		await test.step("Setup Route Mock with Artificial 3-Second Delay", async () => {
-			await page.route(`${BASE_URL}/api/health`, async (route) => {
+			await page.route(`${process.env.BASE_URL}/api/health`, async (route) => {
 				await new Promise((resolve) => setTimeout(resolve, 3000));
 
 				await route.fulfill({
@@ -59,7 +58,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 				const res = await fetch(url);
 				const body = await res.json();
 				return { status: res.status, body };
-			}, `${BASE_URL}/api/health`);
+			}, `${process.env.BASE_URL}/api/health`);
 
 			expect(status).toBe(200);
 
@@ -72,7 +71,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 		page,
 	}) => {
 		await test.step("Setup Route Mock to Abort the Network Request", async () => {
-			await page.route(`${BASE_URL}/api/health`, async (route) => {
+			await page.route(`${process.env.BASE_URL}/api/health`, async (route) => {
 				await route.abort("failed");
 			});
 		});
@@ -87,7 +86,7 @@ test.describe("API health mocking - Negative cases and Latency", () => {
 				} catch {
 					return true;
 				}
-			}, `${BASE_URL}/api/health`);
+			}, `${process.env.BASE_URL}/api/health`);
 
 			expect(didThrow).toBe(true);
 		});

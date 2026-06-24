@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { ProductsSchema } from "@/fixtures/schemas/schemas.js";
 import type { ProductsResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
@@ -12,7 +11,6 @@ test.describe("Products API", () => {
 			const { status, body } = await apiRequest<ProductsResponse>({
 				method: "GET",
 				url: "/api/products",
-				baseUrl: BASE_URL,
 			});
 
 			responseStatus = status;

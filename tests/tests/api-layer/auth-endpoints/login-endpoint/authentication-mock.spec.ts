@@ -1,10 +1,9 @@
-import { BASE_URL } from "@/constants.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 import type { LoginResponse } from "@/types/user.type.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 
-const LOGIN_URL = `${BASE_URL}/api/login`;
+const LOGIN_URL = `${process.env.BASE_URL}/api/login`;
 
 const MOCK_LOGIN_RESPONSE: LoginResponse = {
 	message: "Login successful",

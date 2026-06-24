@@ -3,7 +3,7 @@
  *
  * This file teaches Claude agents how the framework is set up:
  *  - How to import the custom `apiRequest` fixture
- *  - The base URL (http://localhost:3000)
+ *  - Relative URLs are resolved automatically via baseURL set in playwright.config.ts
  *  - The shared response shape { status, body }
  *  - How test.step() is used for structured reporting
  *
@@ -11,15 +11,12 @@
  */
 import { expect, test } from "../fixtures/test-options.js";
 
-const BASE_URL = "http://localhost:3000";
-
 test.describe("Seed — API Framework Bootstrap", () => {
 	test("seed: API is reachable", async ({ apiRequest }) => {
 		await test.step("GET /api/health returns 200", async () => {
 			const { status, body } = await apiRequest({
 				method: "GET",
 				url: "/api/health",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(200);

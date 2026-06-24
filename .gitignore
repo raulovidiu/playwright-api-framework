@@ -85,3 +85,4 @@ pids/
 # ================================
 .claude/
 .mcp.json
+test-results/.last-run.json

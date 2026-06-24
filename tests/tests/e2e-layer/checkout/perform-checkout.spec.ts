@@ -1,4 +1,3 @@
-import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { expect, test } from "@/fixtures/test-options.js";
 import { cardData } from "@/test-data/card-data.js";
 import { shippingData } from "@/test-data/shipping-data.js";

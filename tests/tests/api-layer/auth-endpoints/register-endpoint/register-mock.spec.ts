@@ -1,11 +1,10 @@
-import { BASE_URL } from "@/constants.js";
 import { createRegisterPayload } from "@/fixtures/factories/user.factory.js";
 import type { RegisterResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 
-const REGISTER_URL = `${BASE_URL}/api/register`;
+const REGISTER_URL = `${process.env.BASE_URL}/api/register`;
 
 const MOCK_REGISTER_RESPONSE: RegisterResponse = {
 	message: "Registration successful",

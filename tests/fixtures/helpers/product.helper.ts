@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../constants.js";
 import type { ApiRequestFn } from "../schemas/type-guards.js"; //
 
 export async function addProductToCart(
@@ -9,7 +8,6 @@ export async function addProductToCart(
 	await apiRequest({
 		method: "POST",
 		url: "/api/cart",
-		baseUrl: BASE_URL,
 		body: { productId, quantity },
 	});
 }

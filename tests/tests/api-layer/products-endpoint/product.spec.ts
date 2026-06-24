@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { ProductSchema } from "@/fixtures/schemas/schemas.js";
 import type { ProductResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
@@ -12,7 +11,6 @@ test.describe("Product API - Invoke and Verify a Single Product", () => {
 			const { status, body } = await apiRequest<ProductResponse>({
 				method: "GET",
 				url: "/api/products/1",
-				baseUrl: BASE_URL,
 			});
 
 			responseStatus = status;
@@ -41,7 +39,6 @@ test.describe("Product API - Invoke and Verify a Single Product", () => {
 			const { status } = await apiRequest({
 				method: "GET",
 				url: "/api/products/9999",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(404);
@@ -55,7 +52,6 @@ test.describe("Product API - Invoke and Verify a Single Product", () => {
 			const { status } = await apiRequest({
 				method: "GET",
 				url: "/api/products/abc",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(404);
@@ -69,7 +65,6 @@ test.describe("Product API - Invoke and Verify a Single Product", () => {
 			const { status } = await apiRequest({
 				method: "GET",
 				url: "/api/products/-1",
-				baseUrl: BASE_URL,
 			});
 
 			expect([400, 404]).toContain(status);
@@ -81,7 +76,6 @@ test.describe("Product API - Invoke and Verify a Single Product", () => {
 			const { status } = await apiRequest({
 				method: "GET",
 				url: "/api/products/0",
-				baseUrl: BASE_URL,
 			});
 
 			expect([400, 404]).toContain(status);
