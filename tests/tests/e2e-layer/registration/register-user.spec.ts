@@ -12,7 +12,11 @@ test.describe("Registration", () => {
 			const uniqueEmail = `test${Date.now()}@example.com`;
 
 			await test.step("Submit registration form with unique email", async () => {
-				await registerPage.register("New User", uniqueEmail, "password123");
+				await registerPage.register(
+					"New User",
+					uniqueEmail,
+					process.env.USER_EMAIL!,
+				);
 			});
 
 			await test.step("Verify account creation toast message appears", async () => {

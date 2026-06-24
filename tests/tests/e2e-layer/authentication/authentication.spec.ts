@@ -22,7 +22,10 @@ test.describe("Authentication", () => {
 			page,
 		}) => {
 			await test.step("Submit login form with valid credentials", async () => {
-				await loginPage.login("demo@techmart.com", "demo123");
+				await loginPage.login(
+					process.env.USER_EMAIL!,
+					process.env.USER_PASSWORD!,
+				);
 			});
 
 			await test.step("Verify login success toast message appears", async () => {
@@ -49,9 +52,11 @@ test.describe("Authentication", () => {
 			await test.step("Verify demo credentials area is visible and contains default data", async () => {
 				await expect(loginPage.demoCredentials).toBeVisible();
 				await expect(loginPage.demoCredentials).toContainText(
-					"demo@techmart.com",
+					process.env.USER_EMAIL!,
 				);
-				await expect(loginPage.demoCredentials).toContainText("demo123");
+				await expect(loginPage.demoCredentials).toContainText(
+					process.env.USER_PASSWORD!,
+				);
 			});
 		});
 	});
@@ -60,7 +65,10 @@ test.describe("Authentication", () => {
 		test("Logs out successfully", async ({ loginPage, page }) => {
 			await test.step("Navigate to login page and perform sign in", async () => {
 				await loginPage.navigate();
-				await loginPage.login("demo@techmart.com", "demo123");
+				await loginPage.login(
+					process.env.USER_EMAIL!,
+					process.env.USER_PASSWORD!,
+				);
 				await page.waitForURL("/");
 			});
 

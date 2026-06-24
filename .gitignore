@@ -41,6 +41,13 @@ tsconfig.tsbuildinfo
 !.env.example
 !.env.template
 
+# Allow Git to track the tests/.env/ directory
+!tests/.env/
+# Ignore everything inside that directory
+tests/.env/*
+# Exception: Track this specific file
+!tests/.env/.env.example
+
 # ================================
 # Playwright
 # ================================
