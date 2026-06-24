@@ -1,5 +1,4 @@
 import { expect, type Locator, type Page } from "@playwright/test";
-import { BASE_URL } from "@/constants.js";
 
 /**
  * Page Object for the Checkout page.

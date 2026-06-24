@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { registerFreshUser } from "@/fixtures/helpers/user.helper.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 import type {
@@ -23,7 +22,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<LoginResponse>({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: registeredPayload.password,
@@ -61,7 +59,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { body } = await apiRequest<LoginResponse>({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: registeredPayload.password,
@@ -94,7 +91,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { body } = await apiRequest<LoginResponse>({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: registeredPayload.password,
@@ -124,7 +120,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { status } = await apiRequest<LoginResponse>({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: registeredPayload.password,
@@ -138,7 +133,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<GetUserResponse>({
 				method: "GET",
 				url: "/api/user",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(200);
@@ -175,7 +169,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { status } = await apiRequest<LoginResponse>({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: registeredPayload.password,
@@ -189,7 +182,6 @@ test.describe("Authentication API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<LogoutResponse>({
 				method: "POST",
 				url: "/api/logout",
-				baseUrl: BASE_URL,
 			});
 
 			logoutStatus = status;

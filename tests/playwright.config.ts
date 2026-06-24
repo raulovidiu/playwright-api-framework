@@ -1,4 +1,4 @@
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
@@ -8,8 +8,8 @@ const __dirname = dirname(__filename);
 
 const environmentPath =
 	process.env.ENVIRONMENT === undefined
-		? `./env/.env.dev`
-		: `./env/.env.${process.env.ENVIRONMENT}`;
+		? join(__dirname, ".env", ".env.local")
+		: join(__dirname, ".env", `.env.${process.env.ENVIRONMENT}`);
 
 dotenv.config({ path: environmentPath });
 
@@ -22,7 +22,7 @@ export default defineConfig({
 	retries: process.env.CI ? 2 : 0,
 	reporter: [["html"], ["list"]],
 	use: {
-		baseURL: "http://localhost:3000",
+		baseURL: process.env.BASE_URL,
 		trace: "on-first-retry",
 		screenshot: "only-on-failure",
 		video: "on-first-retry",
@@ -35,7 +35,7 @@ export default defineConfig({
 	],
 	webServer: {
 		command: `cd ${__dirname}/../app && npm start`,
-		url: "http://localhost:3000",
+		url: process.env.BASE_URL ?? "http://localhost:3000",
 		reuseExistingServer: !process.env.CI,
 		timeout: 120 * 1000,
 	},

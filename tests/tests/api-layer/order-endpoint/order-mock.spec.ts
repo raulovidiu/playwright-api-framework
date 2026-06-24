@@ -1,11 +1,10 @@
-import { BASE_URL } from "@/constants.js";
 import type { OrderItemsResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 import { shippingData } from "@/test-data/shipping-data.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 
-const ORDER_BASE_URL = `${BASE_URL}/api/orders`;
+const ORDER_BASE_URL = `${process.env.BASE_URL}/api/orders`;
 
 test.describe("Orders API Mocking — Network and Error Scenarios", () => {
 	test("Simulate 404 Not Found when fetching a non-existent order", async ({

@@ -1,10 +1,9 @@
-import { BASE_URL } from "@/constants.js";
 import type { CartResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 
 type ApiErrorResponse = { error: string; message?: string };
 
-const CART_URL = `${BASE_URL}/api/cart`;
+const CART_URL = `${process.env.BASE_URL}/api/cart`;
 
 test.describe("Cart API Mocking — Network and Error Scenarios", () => {
 	test("Simulate 500 Internal Server Error on fetching cart", async ({

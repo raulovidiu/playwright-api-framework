@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { registerFreshUser } from "@/fixtures/helpers/user.helper.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
 
@@ -16,7 +15,6 @@ test.describe("Authentication API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: registeredPayload.email,
 					password: "WrongPassword999!",
@@ -34,7 +32,6 @@ test.describe("Authentication API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: "nonexistent@example.com",
 					password: "ValidPass123!",
@@ -50,7 +47,6 @@ test.describe("Authentication API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					password: "ValidPass123!",
 				},
@@ -67,7 +63,6 @@ test.describe("Authentication API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {
 					email: "test@example.com",
 				},
@@ -82,7 +77,6 @@ test.describe("Authentication API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/login",
-				baseUrl: BASE_URL,
 				body: {},
 			});
 

@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { ProductsSchema } from "@/fixtures/schemas/schemas.js";
 import type { ProductsResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
@@ -14,7 +13,6 @@ test.describe("Products API - maxPrice Query Param", () => {
 			const { status, body } = await apiRequest<ProductsResponse>({
 				method: "GET",
 				url: `/api/products?maxPrice=${MAX_PRICE}`,
-				baseUrl: BASE_URL,
 			});
 			responseStatus = status;
 			responseBody = body;
@@ -49,7 +47,6 @@ test.describe("Products API - category Query Param", () => {
 			const { status, body } = await apiRequest<ProductsResponse>({
 				method: "GET",
 				url: `/api/products?category=${CATEGORY}`,
-				baseUrl: BASE_URL,
 			});
 			responseStatus = status;
 			responseBody = body;

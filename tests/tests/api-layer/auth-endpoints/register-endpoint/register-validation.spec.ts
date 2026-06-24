@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import {
 	createPayloadWithInvalidEmail,
 	createPayloadWithoutEmail,
@@ -19,7 +18,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status, body } = await apiRequest<RegisterErrorResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createPayloadWithoutEmail(),
 			});
 			responseStatus = status;
@@ -45,7 +43,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status, body } = await apiRequest<RegisterErrorResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createPayloadWithoutPassword(),
 			});
 			responseStatus = status;
@@ -71,7 +68,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status, body } = await apiRequest<RegisterErrorResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createPayloadWithoutName(),
 			});
 			responseStatus = status;
@@ -96,7 +92,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: {},
 			});
 			responseStatus = status;
@@ -112,7 +107,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: payload,
 			});
 			expect(status).toBe(201);
@@ -125,7 +119,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status, body } = await apiRequest<RegisterErrorResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: payload,
 			});
 			responseStatus = status;
@@ -150,7 +143,6 @@ test.describe("Register API — Field Validation", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createPayloadWithInvalidEmail(),
 			});
 

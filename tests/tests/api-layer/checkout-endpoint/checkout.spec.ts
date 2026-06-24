@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { addProductToCart } from "@/fixtures/helpers/product.helper.js";
 import { CheckoutResponseSchema } from "@/fixtures/schemas/schemas.js";
@@ -27,7 +26,6 @@ test.describe("Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<CheckoutResponse>({
 				method: "POST",
 				url: "/api/checkout",
-				baseUrl: BASE_URL,
 				body: { shipping: shippingData },
 			});
 
@@ -73,7 +71,6 @@ test.describe("Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<CheckoutResponse>({
 				method: "POST",
 				url: "/api/checkout",
-				baseUrl: BASE_URL,
 				body: { shipping: shippingData },
 			});
 

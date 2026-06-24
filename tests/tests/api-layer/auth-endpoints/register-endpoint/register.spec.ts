@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { createRegisterPayload } from "@/fixtures/factories/user.factory.js";
 import { RegisterSchema } from "@/fixtures/schemas/schemas.js";
 import type { RegisterResponse } from "@/fixtures/schemas/type-guards.js";
@@ -16,7 +15,6 @@ test.describe("Register API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<RegisterResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createRegisterPayload(),
 			});
 
@@ -54,7 +52,6 @@ test.describe("Register API - Nominal Conditions", () => {
 			const { body } = await apiRequest<RegisterResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: payload,
 			});
 			responseBody = body;
@@ -78,7 +75,6 @@ test.describe("Register API - Nominal Conditions", () => {
 			const { body } = await apiRequest<RegisterResponse>({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: createRegisterPayload(),
 			});
 			responseBody = body;
@@ -101,7 +97,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: payload,
 			});
 			expect(status).toBe(201);
@@ -111,7 +106,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: payload,
 			});
 			expect(status).toBe(400);
@@ -125,7 +119,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: {
 					password: "ValidPass123!",
 					name: "Test User",
@@ -142,7 +135,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: {
 					email: "test@example.com",
 					name: "Test User",
@@ -157,7 +149,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: {
 					email: "test@example.com",
 					password: "ValidPass123!",
@@ -174,7 +165,6 @@ test.describe("Register API - Negative Cases", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/register",
-				baseUrl: BASE_URL,
 				body: {},
 			});
 			expect(status).toBe(400);

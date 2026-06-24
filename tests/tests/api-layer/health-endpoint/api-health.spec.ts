@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { HealthSchema } from "@/fixtures/schemas/schemas.js";
 import type { HealthResponse } from "@/fixtures/schemas/type-guards.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
@@ -12,7 +11,6 @@ test.describe("API Health Endpoint", () => {
 			const { status, body } = await apiRequest<HealthResponse>({
 				method: "GET",
 				url: "/api/health",
-				baseUrl: BASE_URL,
 			});
 
 			responseStatus = status;
@@ -42,7 +40,6 @@ test.describe("Negative Cases for API Health Endpoint", () => {
 			const { status } = await apiRequest({
 				method: "POST",
 				url: "/api/health",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(404);
@@ -54,7 +51,6 @@ test.describe("Negative Cases for API Health Endpoint", () => {
 			const { status } = await apiRequest({
 				method: "GET",
 				url: "/api/health/unknown",
-				baseUrl: BASE_URL,
 			});
 
 			expect(status).toBe(404);
@@ -69,7 +65,6 @@ test.describe("Negative Cases for API Health Endpoint", () => {
 				const { status, body } = await apiRequest<HealthResponse>({
 					method: "GET",
 					url: "/api/health",
-					baseUrl: BASE_URL,
 				});
 
 				expect(status).toBe(200);

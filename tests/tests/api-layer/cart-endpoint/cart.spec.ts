@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { addProductToCart } from "@/fixtures/helpers/product.helper.js";
 import {
@@ -35,7 +34,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartResponse>({
 					method: "GET",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 				});
 
 				responseStatus = status;
@@ -68,7 +66,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartResponse>({
 					method: "GET",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 				});
 
 				responseStatus = status;
@@ -109,7 +106,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartAddResponse>({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: 1 },
 				});
 
@@ -148,7 +144,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartAddResponse>({
 					method: "POST",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 					body: { productId: 1, quantity: 2 },
 				});
 
@@ -185,7 +180,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartUpdateResponse>({
 					method: "PUT",
 					url: "/api/cart/1",
-					baseUrl: BASE_URL,
 					body: { quantity: 5 },
 				});
 
@@ -226,7 +220,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartDeleteItemResponse>({
 					method: "DELETE",
 					url: "/api/cart/1",
-					baseUrl: BASE_URL,
 				});
 
 				responseStatus = status;
@@ -262,7 +255,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartClearResponse>({
 					method: "DELETE",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 				});
 
 				responseStatus = status;
@@ -290,7 +282,6 @@ test.describe("Cart API - Nominal Conditions", () => {
 				const { status, body } = await apiRequest<CartClearResponse>({
 					method: "DELETE",
 					url: "/api/cart",
-					baseUrl: BASE_URL,
 				});
 
 				responseStatus = status;

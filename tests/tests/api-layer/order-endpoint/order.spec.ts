@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { addProductToCart } from "@/fixtures/helpers/product.helper.js";
 import {
@@ -38,7 +37,6 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<CheckoutResponse>({
 				method: "POST",
 				url: "/api/checkout",
-				baseUrl: BASE_URL,
 				body: { shipping: shippingData },
 			});
 
@@ -71,7 +69,6 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<OrderItemsResponse>({
 				method: "GET",
 				url: `/api/orders/${createdOrderId}`,
-				baseUrl: BASE_URL,
 			});
 			orderStatus = status;
 			orderBody = body;
@@ -109,7 +106,6 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<CheckoutResponse>({
 				method: "POST",
 				url: "/api/checkout",
-				baseUrl: BASE_URL,
 				body: { shipping: shippingData },
 			});
 
@@ -144,7 +140,6 @@ test.describe("Order & Checkout API - Nominal Conditions", () => {
 			const { status, body } = await apiRequest<OrderItemsResponse>({
 				method: "GET",
 				url: `/api/orders/${createdOrderId}`,
-				baseUrl: BASE_URL,
 			});
 			orderStatus = status;
 			orderBody = body;

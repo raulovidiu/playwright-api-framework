@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants.js";
 import { clearCart } from "@/fixtures/helpers/cart.helper.js";
 import { addProductToCart } from "@/fixtures/helpers/product.helper.js";
 import { expect, test } from "@/fixtures/test-options.api.js";
@@ -19,7 +18,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "POST",
 					url: "/api/checkout",
-					baseUrl: BASE_URL,
 					body: { shipping: shippingData },
 				});
 
@@ -39,7 +37,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "POST",
 					url: "/api/checkout",
-					baseUrl: BASE_URL,
 					body: {}, // Missing 'shipping' key entirely
 				});
 
@@ -59,7 +56,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "POST",
 					url: "/api/checkout",
-					baseUrl: BASE_URL,
 					body: {
 						shipping: {
 							city: shippingData.city,
@@ -85,7 +81,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "POST",
 					url: "/api/checkout",
-					baseUrl: BASE_URL,
 					body: {
 						shipping: {
 							address: shippingData.address,
@@ -111,7 +106,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "POST",
 					url: "/api/checkout",
-					baseUrl: BASE_URL,
 					body: {
 						shipping: {
 							address: shippingData.address,
@@ -137,7 +131,6 @@ test.describe("Order API - Negative Cases", () => {
 				const { status, body } = await apiRequest<{ error: string }>({
 					method: "GET",
 					url: `/api/orders/${nonExistentOrderId}`,
-					baseUrl: BASE_URL,
 				});
 
 				expect(status).toBe(404);
