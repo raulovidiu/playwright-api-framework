@@ -15,15 +15,15 @@
 		"test:report": "playwright show-report"
 	},
 	"devDependencies": {
-		"typescript": "6.0.3",
-		"@playwright/test": "^1.61.0",
-		"@biomejs/biome": "^2.4.16"
+		"typescript": "7.0.2",
+		"@playwright/test": "^1.61.1",
+		"@biomejs/biome": "^2.5.4"
 	},
 	"dependencies": {
 		"dotenv": "17.4.2",
 		"cross-env": "10.1.0",
 		"zod": "4.4.3",
-		"@faker-js/faker": "10.4.0",
-		"@types/node": "25.9.1"
+		"@faker-js/faker": "10.5.0",
+		"@types/node": "26.1.1"
 	}
 }
