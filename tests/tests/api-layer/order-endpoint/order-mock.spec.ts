@@ -274,8 +274,10 @@ test.describe("Orders API Mocking — Network and Error Scenarios", () => {
 			expect(status).toBe(200);
 			expect(body.id).toBe(orderId);
 			expect(body.items.length).toBe(1);
-			expect(body.items[0]!.productId).toBe(1);
-			expect(body.items[0]!.quantity).toBe(2);
+			const [firstItem] = body.items;
+			expect(firstItem).toBeDefined();
+			expect(firstItem?.productId).toBe(1);
+			expect(firstItem?.quantity).toBe(2);
 			expect(body.shipping).toEqual(shippingData);
 		});
 	});

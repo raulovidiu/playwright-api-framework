@@ -85,7 +85,7 @@ test.describe("Cart API - Nominal Conditions", () => {
 			await test.step("Verify item details match the seeded values", async () => {
 				const item1 = responseBody.items.find((i) => i.productId === 1);
 				expect(item1).toBeDefined();
-				expect(item1!.quantity).toBe(2);
+				expect(item1?.quantity).toBe(2);
 			});
 
 			await test.step("Total field is populated as a non-zero string", async () => {
@@ -125,8 +125,10 @@ test.describe("Cart API - Nominal Conditions", () => {
 
 			await test.step("Cart array contains the added item with correct quantity", async () => {
 				expect(responseBody.cart.length).toBe(1);
-				expect(responseBody.cart[0]!.productId).toBe(1);
-				expect(responseBody.cart[0]!.quantity).toBe(1);
+				const [firstCartItem] = responseBody.cart;
+				expect(firstCartItem).toBeDefined();
+				expect(firstCartItem?.productId).toBe(1);
+				expect(firstCartItem?.quantity).toBe(1);
 			});
 		});
 
@@ -159,8 +161,10 @@ test.describe("Cart API - Nominal Conditions", () => {
 
 			await test.step("Cart item quantity is incremented correctly", async () => {
 				expect(responseBody.cart.length).toBe(1);
-				expect(responseBody.cart[0]!.productId).toBe(1);
-				expect(responseBody.cart[0]!.quantity).toBe(3);
+				const [firstCartItem] = responseBody.cart;
+				expect(firstCartItem).toBeDefined();
+				expect(firstCartItem?.productId).toBe(1);
+				expect(firstCartItem?.quantity).toBe(3);
 			});
 		});
 	});
@@ -199,8 +203,10 @@ test.describe("Cart API - Nominal Conditions", () => {
 
 			await test.step("Cart array reflects the updated quantity", async () => {
 				expect(responseBody.cart.length).toBe(1);
-				expect(responseBody.cart[0]!.productId).toBe(1);
-				expect(responseBody.cart[0]!.quantity).toBe(5);
+				const [firstCartItem] = responseBody.cart;
+				expect(firstCartItem).toBeDefined();
+				expect(firstCartItem?.productId).toBe(1);
+				expect(firstCartItem?.quantity).toBe(5);
 			});
 		});
 	});

@@ -45,8 +45,10 @@ test.describe("Checkout API - Nominal Conditions", () => {
 
 		await test.step("Order items array contains exactly one entry with correct details", async () => {
 			expect(checkoutBody.order.items.length).toBe(1);
-			expect(checkoutBody.order.items[0]!.productId).toBe(1);
-			expect(checkoutBody.order.items[0]!.quantity).toBe(2);
+			const [firstItem] = checkoutBody.order.items;
+			expect(firstItem).toBeDefined();
+			expect(firstItem?.productId).toBe(1);
+			expect(firstItem?.quantity).toBe(2);
 		});
 
 		await test.step("Order contains correct shipping information", async () => {

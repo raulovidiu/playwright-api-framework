@@ -25,7 +25,7 @@ test.describe("Authentication - Form Validation", () => {
 
 		await test.step("Validate that the native HTML5 error is triggered on the Email field", async () => {
 			const isInvalid = await loginPage.emailInput.evaluate(
-				(el: any) => !el.checkValidity(),
+				(el) => !(el as HTMLInputElement).checkValidity(),
 			);
 			expect(isInvalid).toBe(true);
 		});
