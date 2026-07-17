@@ -6,11 +6,11 @@ End-to-end automated test suite for the [E-commerce](../app/README.md) demo appl
 
 ## Tech Stack
 
-- [Playwright](https://playwright.dev/) `^1.61.0` – E2E testing framework
-- [TypeScript](https://www.typescriptlang.org/) `6.0.3`
+- [Playwright](https://playwright.dev/) `^1.61.1` – E2E testing framework
+- [TypeScript](https://www.typescriptlang.org/) `7.0.2`
 - [Zod](https://zod.dev/) `4.4.3` – data validation / schema parsing
-- [@faker-js/faker](https://fakerjs.dev/) `10.4.0` – test data generation
-- [Biome](https://biomejs.dev/) `^2.4.16` – linting and code formatting
+- [@faker-js/faker](https://fakerjs.dev/) `10.5.0` – test data generation
+- [Biome](https://biomejs.dev/) `^2.5.4` – linting and code formatting
 - [dotenv](https://github.com/motdotla/dotenv) `17.4.2` – environment variable management
 - [cross-env](https://github.com/75lb/cross-env) `10.1.0` – cross-platform environment variables
 
