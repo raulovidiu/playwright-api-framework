@@ -31,6 +31,8 @@ build/
 out/
 *.js.map
 *.d.ts
+# Exception: manually authored ambient declarations
+!tests/types/*.d.ts
 tsconfig.tsbuildinfo
 
 # ================================

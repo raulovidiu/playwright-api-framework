@@ -23,8 +23,8 @@ test.describe("Authentication", () => {
 		}) => {
 			await test.step("Submit login form with valid credentials", async () => {
 				await loginPage.login(
-					process.env.USER_EMAIL!,
-					process.env.USER_PASSWORD!,
+					process.env.USER_EMAIL,
+					process.env.USER_PASSWORD,
 				);
 			});
 
@@ -52,10 +52,10 @@ test.describe("Authentication", () => {
 			await test.step("Verify demo credentials area is visible and contains default data", async () => {
 				await expect(loginPage.demoCredentials).toBeVisible();
 				await expect(loginPage.demoCredentials).toContainText(
-					process.env.USER_EMAIL!,
+					process.env.USER_EMAIL,
 				);
 				await expect(loginPage.demoCredentials).toContainText(
-					process.env.USER_PASSWORD!,
+					process.env.USER_PASSWORD,
 				);
 			});
 		});
@@ -66,8 +66,8 @@ test.describe("Authentication", () => {
 			await test.step("Navigate to login page and perform sign in", async () => {
 				await loginPage.navigate();
 				await loginPage.login(
-					process.env.USER_EMAIL!,
-					process.env.USER_PASSWORD!,
+					process.env.USER_EMAIL,
+					process.env.USER_PASSWORD,
 				);
 				await page.waitForURL("/");
 			});

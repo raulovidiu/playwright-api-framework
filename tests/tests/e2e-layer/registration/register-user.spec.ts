@@ -15,7 +15,7 @@ test.describe("Registration", () => {
 				await registerPage.register(
 					"New User",
 					uniqueEmail,
-					process.env.USER_EMAIL!,
+					process.env.USER_EMAIL,
 				);
 			});
 
